@@ -48,6 +48,7 @@ namespace Prototyping_of_Project
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label1.Location = new System.Drawing.Point(13, 13);
@@ -59,6 +60,7 @@ namespace Prototyping_of_Project
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label2.Location = new System.Drawing.Point(12, 54);
@@ -70,17 +72,21 @@ namespace Prototyping_of_Project
             // lblMax
             // 
             this.lblMax.AutoSize = true;
+            this.lblMax.BackColor = System.Drawing.Color.Transparent;
             this.lblMax.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMax.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lblMax.Location = new System.Drawing.Point(13, 175);
+            this.lblMax.MinimumSize = new System.Drawing.Size(520, 46);
             this.lblMax.Name = "lblMax";
-            this.lblMax.Size = new System.Drawing.Size(32, 46);
+            this.lblMax.Size = new System.Drawing.Size(520, 46);
             this.lblMax.TabIndex = 0;
             this.lblMax.Text = "/";
+            this.lblMax.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label4.Location = new System.Drawing.Point(13, 125);
@@ -186,6 +192,7 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Withdraw";
+            this.ShowIcon = false;
             this.Text = "Withdraw";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

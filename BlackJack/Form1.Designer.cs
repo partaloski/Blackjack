@@ -390,6 +390,7 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.dealer1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Blackjack";
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).EndInit();

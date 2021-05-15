@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prototyping_of_Project.Properties {
+namespace BlackJack.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Prototyping_of_Project.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Prototyping_of_Project.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BlackJack.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -116,6 +116,16 @@ namespace Prototyping_of_Project.Properties {
         internal static System.Drawing.Bitmap background22 {
             get {
                 object obj = ResourceManager.GetObject("background22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background23 {
+            get {
+                object obj = ResourceManager.GetObject("background23", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

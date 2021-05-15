@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Prototyping_of_Project</RootNamespace>
+    <RootNamespace>BlackJack</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icn.ico</ApplicationIcon>
   </PropertyGroup>

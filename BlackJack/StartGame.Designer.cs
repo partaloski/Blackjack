@@ -162,8 +162,10 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.btnQuarter);
             this.Controls.Add(this.btnHalf);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StartGame";
-            this.Text = "StartGame";
+            this.ShowIcon = false;
+            this.Text = "Set bet and start the game";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
