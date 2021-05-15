@@ -41,3 +41,7 @@
 <h4>The whole thing initial game was done in less than 12 hours!
 Bug fixes have been coming to the game every 5-6 hours, as of now.
 More updates to follow!</h4>
+
+<hr>
+<h2 style="color: red; font-weight: bold; display: inline;">IN ORDER TO RUN THE GAME:</h2> <h3 style="color: red;">Go to: /Prototyping of Project/bin/debug/netcoreapp3.1/BlackJack.exe</h3>
+<hr>
