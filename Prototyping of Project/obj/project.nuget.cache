@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eGQCIRKVSeuQ+TW96U11MIpWCh7CVXjTpK2ctyOht/46Q5w3cxgCR3cWPfoq4X5Iwyu3aibxwuh6NkzF4R54TA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\parta\\source\\repos\\Prototyping of Project\\Prototyping of Project\\BlackJack.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\parta\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

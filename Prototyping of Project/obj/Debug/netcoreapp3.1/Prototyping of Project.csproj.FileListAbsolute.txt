@@ -1,0 +1,18 @@
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.csprojAssemblyReference.cache
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping_of_Project.Form1.resources
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.csproj.GenerateResource.cache
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.exe
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.deps.json
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.runtimeconfig.json
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.runtimeconfig.dev.json
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.dll
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\bin\Debug\netcoreapp3.1\Prototyping of Project.pdb
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping_of_Project.Properties.Resources.resources
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.AssemblyInfoInputs.cache
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.AssemblyInfo.cs
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.csproj.CoreCompileInputs.cache
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.dll
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.pdb
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping of Project.genruntimeconfig.cache
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping_of_Project.Deposit.resources
+C:\Users\parta\source\repos\Prototyping of Project\Prototyping of Project\obj\Debug\netcoreapp3.1\Prototyping_of_Project.StartGame.resources

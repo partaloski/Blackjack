@@ -1,0 +1,5 @@
+C:\Users\parta\Desktop\BlackJack\Prototyping of Project.exe
+C:\Users\parta\Desktop\BlackJack\Prototyping of Project.dll
+C:\Users\parta\Desktop\BlackJack\Prototyping of Project.deps.json
+C:\Users\parta\Desktop\BlackJack\Prototyping of Project.runtimeconfig.json
+C:\Users\parta\Desktop\BlackJack\Prototyping of Project.pdb
