@@ -103,6 +103,26 @@ namespace Prototyping_of_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap casino_wallpaper_13 {
+            get {
+                object obj = ResourceManager.GetObject("casino-wallpaper-13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chip {
+            get {
+                object obj = ResourceManager.GetObject("chip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap empty {
             get {
                 object obj = ResourceManager.GetObject("empty", resourceCulture);
@@ -156,6 +176,16 @@ namespace Prototyping_of_Project.Properties {
         internal static System.Drawing.Bitmap preset_background31 {
             get {
                 object obj = ResourceManager.GetObject("preset-background31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap your_money {
+            get {
+                object obj = ResourceManager.GetObject("your_money", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

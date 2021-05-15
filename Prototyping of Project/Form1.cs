@@ -387,5 +387,21 @@ namespace Prototyping_of_Project
             btnHit.Enabled = false;
         }
 
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            if (funds == 0)
+            {
+                MessageBox.Show("You cannot refund since you do not have enough chips.");
+                return;
+            }
+            Withdraw withdraw = new Withdraw(funds);
+            
+            withdraw.ShowDialog();
+            if (withdraw.DialogResult == DialogResult.Yes)
+            {
+                funds -= withdraw.withdraw_amount;
+                updateFunds();
+            }
+        }
     }
 }

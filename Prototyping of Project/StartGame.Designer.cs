@@ -44,7 +44,7 @@ namespace Prototyping_of_Project
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(379, 272);
+            this.button1.Location = new System.Drawing.Point(379, 241);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 50);
             this.button1.TabIndex = 0;
@@ -66,6 +66,11 @@ namespace Prototyping_of_Project
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.numericUpDown1.Location = new System.Drawing.Point(12, 12);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
@@ -99,8 +104,8 @@ namespace Prototyping_of_Project
             this.labelMax.AutoSize = true;
             this.labelMax.BackColor = System.Drawing.Color.Transparent;
             this.labelMax.Font = new System.Drawing.Font("Bowlby One SC", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMax.ForeColor = System.Drawing.Color.IndianRed;
-            this.labelMax.Location = new System.Drawing.Point(165, 154);
+            this.labelMax.ForeColor = System.Drawing.Color.Yellow;
+            this.labelMax.Location = new System.Drawing.Point(162, 145);
             this.labelMax.Name = "labelMax";
             this.labelMax.Size = new System.Drawing.Size(124, 43);
             this.labelMax.TabIndex = 3;

@@ -54,6 +54,7 @@ namespace Prototyping_of_Project
             this.dealer6 = new System.Windows.Forms.PictureBox();
             this.lblPlaye = new System.Windows.Forms.Label();
             this.btnJustStart = new System.Windows.Forms.Button();
+            this.btnWithdraw = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).BeginInit();
@@ -204,11 +205,11 @@ namespace Prototyping_of_Project
             // 
             // btnDeposit
             // 
-            this.btnDeposit.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeposit.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeposit.ForeColor = System.Drawing.Color.Green;
-            this.btnDeposit.Location = new System.Drawing.Point(1010, 288);
+            this.btnDeposit.Location = new System.Drawing.Point(985, 253);
             this.btnDeposit.Name = "btnDeposit";
-            this.btnDeposit.Size = new System.Drawing.Size(240, 80);
+            this.btnDeposit.Size = new System.Drawing.Size(265, 80);
             this.btnDeposit.TabIndex = 2;
             this.btnDeposit.Text = "Deposit Credits";
             this.btnDeposit.UseVisualStyleBackColor = true;
@@ -341,6 +342,18 @@ namespace Prototyping_of_Project
             this.btnJustStart.UseVisualStyleBackColor = true;
             this.btnJustStart.Click += new System.EventHandler(this.btnJustStart_Click);
             // 
+            // btnWithdraw
+            // 
+            this.btnWithdraw.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnWithdraw.ForeColor = System.Drawing.Color.Green;
+            this.btnWithdraw.Location = new System.Drawing.Point(985, 339);
+            this.btnWithdraw.Name = "btnWithdraw";
+            this.btnWithdraw.Size = new System.Drawing.Size(265, 80);
+            this.btnWithdraw.TabIndex = 2;
+            this.btnWithdraw.Text = "Withdraw Winnings";
+            this.btnWithdraw.UseVisualStyleBackColor = true;
+            this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -354,6 +367,7 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.lblDealer);
             this.Controls.Add(this.lblFunds);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnWithdraw);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.btnHit);
             this.Controls.Add(this.btnDouble);
@@ -415,6 +429,7 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.PictureBox dealer6;
         private System.Windows.Forms.Label lblPlaye;
         private System.Windows.Forms.Button btnJustStart;
+        private System.Windows.Forms.Button btnWithdraw;
     }
 }
 
