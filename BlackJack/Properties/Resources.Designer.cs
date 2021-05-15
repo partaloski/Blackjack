@@ -63,6 +63,26 @@ namespace Prototyping_of_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap back_count {
+            get {
+                object obj = ResourceManager.GetObject("back_count", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back_count1 {
+            get {
+                object obj = ResourceManager.GetObject("back_count1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap background1 {
             get {
                 object obj = ResourceManager.GetObject("background1", resourceCulture);
@@ -133,6 +153,16 @@ namespace Prototyping_of_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap preset {
+            get {
+                object obj = ResourceManager.GetObject("preset", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap preset_background {
             get {
                 object obj = ResourceManager.GetObject("preset-background", resourceCulture);
@@ -163,6 +193,16 @@ namespace Prototyping_of_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap preset_background22 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap preset_background3 {
             get {
                 object obj = ResourceManager.GetObject("preset-background3", resourceCulture);
@@ -176,6 +216,36 @@ namespace Prototyping_of_Project.Properties {
         internal static System.Drawing.Bitmap preset_background31 {
             get {
                 object obj = ResourceManager.GetObject("preset-background31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background32 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background33 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background33", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background34 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background34", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

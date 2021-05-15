@@ -193,11 +193,11 @@ namespace Prototyping_of_Project
             // btnStart
             // 
             this.btnStart.Enabled = false;
-            this.btnStart.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStart.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStart.ForeColor = System.Drawing.Color.Green;
             this.btnStart.Location = new System.Drawing.Point(12, 253);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(240, 80);
+            this.btnStart.Size = new System.Drawing.Size(216, 80);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Set Bet, Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -205,11 +205,11 @@ namespace Prototyping_of_Project
             // 
             // btnDeposit
             // 
-            this.btnDeposit.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeposit.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeposit.ForeColor = System.Drawing.Color.Green;
-            this.btnDeposit.Location = new System.Drawing.Point(985, 253);
+            this.btnDeposit.Location = new System.Drawing.Point(1027, 245);
             this.btnDeposit.Name = "btnDeposit";
-            this.btnDeposit.Size = new System.Drawing.Size(265, 80);
+            this.btnDeposit.Size = new System.Drawing.Size(236, 88);
             this.btnDeposit.TabIndex = 2;
             this.btnDeposit.Text = "Deposit Credits";
             this.btnDeposit.UseVisualStyleBackColor = true;
@@ -218,11 +218,11 @@ namespace Prototyping_of_Project
             // btnStand
             // 
             this.btnStand.Enabled = false;
-            this.btnStand.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStand.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStand.ForeColor = System.Drawing.Color.Green;
             this.btnStand.Location = new System.Drawing.Point(12, 535);
             this.btnStand.Name = "btnStand";
-            this.btnStand.Size = new System.Drawing.Size(240, 60);
+            this.btnStand.Size = new System.Drawing.Size(331, 60);
             this.btnStand.TabIndex = 2;
             this.btnStand.Text = "Stand";
             this.btnStand.UseVisualStyleBackColor = true;
@@ -231,11 +231,11 @@ namespace Prototyping_of_Project
             // btnHit
             // 
             this.btnHit.Enabled = false;
-            this.btnHit.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHit.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnHit.ForeColor = System.Drawing.Color.Green;
             this.btnHit.Location = new System.Drawing.Point(12, 601);
             this.btnHit.Name = "btnHit";
-            this.btnHit.Size = new System.Drawing.Size(240, 60);
+            this.btnHit.Size = new System.Drawing.Size(331, 60);
             this.btnHit.TabIndex = 2;
             this.btnHit.Text = "Hit";
             this.btnHit.UseVisualStyleBackColor = true;
@@ -244,11 +244,11 @@ namespace Prototyping_of_Project
             // btnDouble
             // 
             this.btnDouble.Enabled = false;
-            this.btnDouble.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDouble.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDouble.ForeColor = System.Drawing.Color.Green;
             this.btnDouble.Location = new System.Drawing.Point(12, 469);
             this.btnDouble.Name = "btnDouble";
-            this.btnDouble.Size = new System.Drawing.Size(240, 60);
+            this.btnDouble.Size = new System.Drawing.Size(331, 60);
             this.btnDouble.TabIndex = 2;
             this.btnDouble.Text = "Double";
             this.btnDouble.UseVisualStyleBackColor = true;
@@ -284,13 +284,15 @@ namespace Prototyping_of_Project
             this.lblDealer.AutoSize = true;
             this.lblDealer.BackColor = System.Drawing.Color.Transparent;
             this.lblDealer.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDealer.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDealer.Location = new System.Drawing.Point(438, 240);
+            this.lblDealer.ForeColor = System.Drawing.Color.White;
+            this.lblDealer.Image = ((System.Drawing.Image)(resources.GetObject("lblDealer.Image")));
+            this.lblDealer.Location = new System.Drawing.Point(305, 245);
+            this.lblDealer.MinimumSize = new System.Drawing.Size(124, 48);
             this.lblDealer.Name = "lblDealer";
-            this.lblDealer.Size = new System.Drawing.Size(32, 46);
+            this.lblDealer.Size = new System.Drawing.Size(124, 48);
             this.lblDealer.TabIndex = 3;
             this.lblDealer.Text = "/";
-            this.lblDealer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDealer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // my6
             // 
@@ -321,22 +323,24 @@ namespace Prototyping_of_Project
             this.lblPlaye.AutoSize = true;
             this.lblPlaye.BackColor = System.Drawing.Color.Transparent;
             this.lblPlaye.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPlaye.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblPlaye.Location = new System.Drawing.Point(807, 386);
+            this.lblPlaye.ForeColor = System.Drawing.Color.White;
+            this.lblPlaye.Image = ((System.Drawing.Image)(resources.GetObject("lblPlaye.Image")));
+            this.lblPlaye.Location = new System.Drawing.Point(834, 380);
+            this.lblPlaye.MinimumSize = new System.Drawing.Size(124, 48);
             this.lblPlaye.Name = "lblPlaye";
-            this.lblPlaye.Size = new System.Drawing.Size(32, 46);
+            this.lblPlaye.Size = new System.Drawing.Size(124, 48);
             this.lblPlaye.TabIndex = 3;
             this.lblPlaye.Text = "/";
-            this.lblPlaye.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPlaye.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnJustStart
             // 
             this.btnJustStart.Enabled = false;
-            this.btnJustStart.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnJustStart.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnJustStart.ForeColor = System.Drawing.Color.Green;
             this.btnJustStart.Location = new System.Drawing.Point(13, 339);
             this.btnJustStart.Name = "btnJustStart";
-            this.btnJustStart.Size = new System.Drawing.Size(240, 80);
+            this.btnJustStart.Size = new System.Drawing.Size(215, 80);
             this.btnJustStart.TabIndex = 2;
             this.btnJustStart.Text = "Start";
             this.btnJustStart.UseVisualStyleBackColor = true;
@@ -346,9 +350,9 @@ namespace Prototyping_of_Project
             // 
             this.btnWithdraw.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnWithdraw.ForeColor = System.Drawing.Color.Green;
-            this.btnWithdraw.Location = new System.Drawing.Point(985, 339);
+            this.btnWithdraw.Location = new System.Drawing.Point(1027, 341);
             this.btnWithdraw.Name = "btnWithdraw";
-            this.btnWithdraw.Size = new System.Drawing.Size(265, 80);
+            this.btnWithdraw.Size = new System.Drawing.Size(236, 80);
             this.btnWithdraw.TabIndex = 2;
             this.btnWithdraw.Text = "Withdraw Winnings";
             this.btnWithdraw.UseVisualStyleBackColor = true;
@@ -360,7 +364,7 @@ namespace Prototyping_of_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.ClientSize = new System.Drawing.Size(1275, 689);
             this.Controls.Add(this.my4);
             this.Controls.Add(this.my3);
             this.Controls.Add(this.lblPlaye);
