@@ -14,6 +14,8 @@ namespace Prototyping_of_Project
         private bool playerStood { get; set; }
         private bool playerHit { get; set; }
 
+        public bool gameStarted = false;
+
         //Default constructor
         public Game(){
             Deck deck = new Deck(2);
@@ -117,13 +119,13 @@ namespace Prototyping_of_Project
             int player = Math.Max(sumPlayer, sumPlayerA);
             int dealer = Math.Max(sumDealer, sumDealerA);
             if (player == 21 && playerCards.Count == 2)
-                return "blackjack";
+                return "blackjack"; 
             else if (player > 21)
                 return "dealer";
             else if (dealer > 21)
                 return "player";
             else if (dealer == 21 && dealerCards.Count == 2)
-                return "dealer";
+                return "dealerBlackjack";
             else if (dealer == 17){
                 if (player > dealer)
                     return "player";
@@ -152,6 +154,7 @@ namespace Prototyping_of_Project
             this.playerHit = false;
             currentDealer = "";
             currentPlayer = "";
+            this.gameStarted = false;
         }
     }
 }

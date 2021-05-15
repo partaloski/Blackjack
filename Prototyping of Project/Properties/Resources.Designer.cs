@@ -93,6 +93,16 @@ namespace Prototyping_of_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background22 {
+            get {
+                object obj = ResourceManager.GetObject("background22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap empty {
             get {
                 object obj = ResourceManager.GetObject("empty", resourceCulture);
@@ -106,6 +116,46 @@ namespace Prototyping_of_Project.Properties {
         internal static System.Drawing.Bitmap preset_background {
             get {
                 object obj = ResourceManager.GetObject("preset-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background2 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background21 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background3 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_background31 {
+            get {
+                object obj = ResourceManager.GetObject("preset-background31", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

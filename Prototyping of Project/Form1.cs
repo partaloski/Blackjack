@@ -16,8 +16,8 @@ namespace Prototyping_of_Project
         public List<PictureBox> playerPic;
         public List<Card> dealerCards;
         public List<Card> playerCards;
-        public bool[] usedDealer = new bool[5];
-        public bool[] usedPlayer = new bool[5];
+        public bool[] usedDealer = new bool[6];
+        public bool[] usedPlayer = new bool[6];
         private Game game;
         private long funds;
         public long bet;
@@ -42,7 +42,7 @@ namespace Prototyping_of_Project
             playerPic.Add(my4);
             playerPic.Add(my5);
             //Player's pictures added
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < 6; i++){
                 usedDealer[i] = false;
                 usedPlayer[i] = false;
             }
@@ -53,12 +53,14 @@ namespace Prototyping_of_Project
             my3.Image = img;
             my4.Image = img;
             my5.Image = img;
+            my6.Image = img;
 
             dealer1.Image = img;
             dealer2.Image = img;
             dealer3.Image = img;
             dealer4.Image = img;
             dealer5.Image = img;
+            dealer6.Image = img;
             //Set used cards to not be used
             dealerCards = new List<Card>();
             playerCards = new List<Card>();
@@ -74,6 +76,7 @@ namespace Prototyping_of_Project
                 funds += form.credits;
                 updateFunds();
                 btnStart.Enabled = true;
+                btnJustStart.Enabled = true;
             }
         }
 
@@ -86,6 +89,7 @@ namespace Prototyping_of_Project
                 start();
                 bet = form.value;
                 funds -= bet;
+                game.gameStarted = true;
                 hit(true);
                 hit(false);
                 hit(true);
@@ -93,7 +97,7 @@ namespace Prototyping_of_Project
                 dealer2.Image = Image.FromFile("./PNG/back.png");
                 game.getCards();
                 lblDealer.Text = game.currentDealer;
-                lblPlayer.Text = game.currentPlayer;
+                lblPlaye.Text = game.currentPlayer;
                 updateCards();
                 end();
                 updateFunds();
@@ -101,12 +105,41 @@ namespace Prototyping_of_Project
                 btnHit.Enabled = true;
             }
         }
+
+
+        //A function for the just start button
+        private void btnJustStart_Click(object sender, EventArgs e)
+        {
+            if (StartGame.lastBet > funds)
+            {
+                MessageBox.Show("You do not have funds to start the game.");
+                return;
+            }
+            start();
+            bet = StartGame.lastBet;
+            funds -= bet;
+            game.gameStarted = true;
+            hit(true);
+            hit(false);
+            hit(true);
+            btnDouble.Visible = true;
+            dealer2.Image = Image.FromFile("./PNG/back.png");
+            game.getCards();
+            lblDealer.Text = game.currentDealer;
+            lblPlaye.Text = game.currentPlayer;
+            updateCards();
+            end();
+            updateFunds();
+            btnStand.Enabled = true;
+            btnHit.Enabled = true;
+        }
         //We wrote a specific function so that the code can be reused.
         private void start(){
             btnHit.Enabled = true;
             btnDouble.Enabled = true;
             btnStand.Enabled = true;
             btnStart.Enabled = false;
+            btnJustStart.Enabled = false;
             //Set up buttons in order to make them clickable
             dealerPic = new List<PictureBox>();
             dealerPic.Add(dealer1);
@@ -114,6 +147,7 @@ namespace Prototyping_of_Project
             dealerPic.Add(dealer3);
             dealerPic.Add(dealer4);
             dealerPic.Add(dealer5);
+            dealerPic.Add(dealer6);
             game.dealerCards = new List<Card>();
             //Set cards and pictures of cards for the dealer
             playerPic = new List<PictureBox>();
@@ -122,11 +156,12 @@ namespace Prototyping_of_Project
             playerPic.Add(my3);
             playerPic.Add(my4);
             playerPic.Add(my5);
+            playerPic.Add(my6);
             game.playerCards = new List<Card>();
             //Set cards and pictures of cards for the player
             updateFunds();
             clearCards();
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < 6; i++){
                 usedDealer[i] = false;
                 usedPlayer[i] = false;
             }
@@ -144,35 +179,44 @@ namespace Prototyping_of_Project
                 game.getCards();
 
                 lblDealer.Text = game.currentDealer;
-                lblPlayer.Text = game.currentPlayer;
+                lblPlaye.Text = game.currentPlayer;
                 updateCards();
                 updateFunds();
-
+                end();
             }
             else{
                 MessageBox.Show("Cannot bet double since your funds are low.");
             }
-            btnStand.Enabled = true;
-            btnHit.Enabled = true;
+            if(game.checkForWin() == "continue")
+            {
+                btnStand.Enabled = true;
+                btnHit.Enabled = true;
+            }
         }
         //Stand button function
         private async void btnStand_Click(object sender, EventArgs e){
             btnStand.Enabled = false;
             btnHit.Enabled = false;
+            btnDouble.Enabled = false;
+            if (game.gameStarted == false)
+                return;
             game.stand();
             while (game.checkForWin() == "continue"){
-                await Task.Delay(750);
+                await Task.Delay(1250);
                 hit(false);
                 updateCards();
             }
             end();
-
-            btnStand.Enabled = true;
-            btnHit.Enabled = true;
         }
 
         //Hit button function
         private void btnHit_Click(object sender, EventArgs e){
+            if (game.gameStarted == false)
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                return;
+            }
             hit(true);
             updateCards();
             end();
@@ -181,14 +225,14 @@ namespace Prototyping_of_Project
         //A function to update the images of the cards
         //A simple function that makes the code reusable
         private void updateCards(){
-            for (int i = 0; i < 5 && i < dealerCards.Count; i++){
+            for (int i = 0; i < 6 && i < dealerCards.Count; i++){
                 if (!usedDealer[i]){
                     dealerPic[i].Image = dealerCards[i].image;
                     usedDealer[i] = true;
                 }
             }
 
-            for (int i = 0; i < 5 && i < playerCards.Count; i++){
+            for (int i = 0; i < 6 && i < playerCards.Count; i++){
                 if (!usedPlayer[i]){
                     playerPic[i].Image = playerCards[i].image;
                     usedPlayer[i] = true;
@@ -196,7 +240,7 @@ namespace Prototyping_of_Project
             }
 
             lblDealer.Text = game.currentDealer;
-            lblPlayer.Text = game.currentPlayer;
+            lblPlaye.Text = game.currentPlayer;
         }
 
         //A function to set the images to the default placeholder
@@ -238,17 +282,24 @@ namespace Prototyping_of_Project
         //Otherwise it's false.
         private void hit(Boolean player)
         {
+            if (game.gameStarted == false)
+                return;
             btnDouble.Visible = false;
             Card c = game.getCard(true);
             if (player){
                 playerCards.Add(c);
                 game.playerCards.Add(c);
                 int index = 0;
-                for (int i = 0; i < 5; i++){
+                for (int i = 0; i < 6; i++){
                     if (usedPlayer[i] == false){
                         index = i;
                         break;
                     }
+                }
+                if(game.checkForWin() == "blackjack")
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
                 }
                 playerPic[index].Image = c.image;
             }
@@ -256,7 +307,7 @@ namespace Prototyping_of_Project
                 dealerCards.Add(c);
                 game.dealerCards.Add(c);
                 int index = 0;
-                for (int i = 0; i < 5; i++){
+                for (int i = 0; i < 6; i++){
                     if (usedDealer[i] == false){
                         index = i;
                         break;
@@ -265,7 +316,18 @@ namespace Prototyping_of_Project
                 dealerPic[index].Image = c.image;
                 game.getCards();
                 lblDealer.Text = game.currentDealer;
-                lblPlayer.Text = game.currentPlayer;
+                lblPlaye.Text = game.currentPlayer;
+
+                if (game.checkForWin() == "blackjack")
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                }
+            }
+            if (game.checkForWin() == "blackjack")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
             }
             updateCards();
         }
@@ -275,38 +337,55 @@ namespace Prototyping_of_Project
         private void end(){
             string outx = game.checkForWin();
             updateCards();
-            if (outx == "blackjack"){
+            if (outx == "blackjack"){ 
                 long x = Convert.ToInt64(Convert.ToDouble(bet) * 2.5);
                 funds += x;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "player"){
+            else if (outx == "player")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 funds += bet * 2;
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "push"){
+            else if (outx == "dealerBlackjack")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
+            }
+            else if (outx == "push")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 funds += bet;
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
             }
-            else if(outx == "dealer"){
+            else if(outx == "dealer")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 MessageBox.Show("YOU LOST " + (bet).ToString() + ", THE DEALER HAS WON! Better luck next time!");
             }
-            if (outx == "continue") return;
+            else if (outx == "continue") return;
             game.reset();
             dealerCards = new List<Card>();
             playerCards = new List<Card>();
-            btnHit.Enabled = false;
-            btnStand.Enabled = false;
-            btnDouble.Enabled = false;
             game.currentDealer = "";
             game.currentPlayer = "";
             lblDealer.Text = "";
-            lblPlayer.Text = "";
+            lblPlaye.Text = "";
             clearCards();
             updateFunds();
             btnStart.Enabled = true;
+            btnJustStart.Enabled = true;
+            btnDouble.Enabled = false;
             btnStand.Enabled = false;
             btnHit.Enabled = false;
         }
+
     }
 }

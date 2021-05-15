@@ -40,10 +40,11 @@ namespace Prototyping_of_Project
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Bowlby One SC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(12, 280);
+            this.button1.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.button1.Location = new System.Drawing.Point(12, 125);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(284, 40);
+            this.button1.Size = new System.Drawing.Size(240, 45);
             this.button1.TabIndex = 0;
             this.button1.Text = "Deposit";
             this.button1.UseVisualStyleBackColor = true;
@@ -51,10 +52,11 @@ namespace Prototyping_of_Project
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Bowlby One SC", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(12, 343);
+            this.button2.Font = new System.Drawing.Font("Bowlby One SC", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.button2.Location = new System.Drawing.Point(12, 186);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(284, 40);
+            this.button2.Size = new System.Drawing.Size(240, 45);
             this.button2.TabIndex = 0;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -65,7 +67,8 @@ namespace Prototyping_of_Project
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(1, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(574, 31);
             this.label1.TabIndex = 2;
@@ -79,7 +82,7 @@ namespace Prototyping_of_Project
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 107);
+            this.numericUpDown1.Location = new System.Drawing.Point(12, 67);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -91,7 +94,7 @@ namespace Prototyping_of_Project
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(480, 39);
+            this.numericUpDown1.Size = new System.Drawing.Size(563, 39);
             this.numericUpDown1.TabIndex = 3;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -105,7 +108,7 @@ namespace Prototyping_of_Project
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Bowlby One SC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(12, 52);
+            this.label2.Location = new System.Drawing.Point(287, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(288, 24);
             this.label2.TabIndex = 2;
@@ -116,7 +119,9 @@ namespace Prototyping_of_Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(594, 395);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CausesValidation = false;
+            this.ClientSize = new System.Drawing.Size(587, 393);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

@@ -10,7 +10,7 @@ namespace Prototyping_of_Project
 {
     public partial class StartGame : Form{
         public long value { get; set; }
-        private static long lastBet = 100;
+        public static long lastBet = 1;
         private long available;
         public StartGame(long available){
             InitializeComponent();
@@ -18,8 +18,9 @@ namespace Prototyping_of_Project
             if (available < lastBet)
                 lastBet = available;
             if (available == 0)
-                available = 1;
-            numericUpDown1.Maximum = available;
+                numericUpDown1.Maximum = 1;
+            else
+                numericUpDown1.Maximum = available;
             if (lastBet < 1)
                 lastBet = Convert.ToInt64(1);
             numericUpDown1.Value = Convert.ToDecimal(lastBet);
@@ -48,7 +49,7 @@ namespace Prototyping_of_Project
         {
             lastBet = Convert.ToInt64(numericUpDown1.Value);
             value = Convert.ToInt64(numericUpDown1.Value);
-            if(value == 0)
+            if(available == 0)
             {
                 MessageBox.Show("You do not have enough funds to play the game, deposit and come back again!");
                 DialogResult = DialogResult.Cancel;
@@ -68,38 +69,37 @@ namespace Prototyping_of_Project
             lastBet = Convert.ToInt64(numericUpDown1.Value);
         }
 
+        //A function that with a button click sets the value of the numericupdown to a quarter of what is available
         private void btnQuarter_Click(object sender, EventArgs e)
         {
             value = Convert.ToInt64(this.available * 0.25);
             if (value == 0)
             {
-                MessageBox.Show("You do not have enough funds to play the game, deposit and come back again!");
-                DialogResult = DialogResult.Cancel;
-                return;
+                value = 1;
             }
-            DialogResult = DialogResult.OK;
+            numericUpDown1.Value = Convert.ToDecimal(value);
         }
 
+        //A function that sets the value to half of what is available
         private void f(object sender, EventArgs e)
         {
-            value = Convert.ToInt64(this.available * 0.5); if (value == 0)
+            value = Convert.ToInt64(this.available * 0.5);
+            if (value == 0)
             {
-                MessageBox.Show("You do not have enough funds to play the game, deposit and come back again!");
-                DialogResult = DialogResult.Cancel;
-                return;
+                value = 1;
             }
-            DialogResult = DialogResult.OK;
+            numericUpDown1.Value = Convert.ToDecimal(value);
         }
 
+        //A function that sets the value to max of what is available
         private void btnMax_Click(object sender, EventArgs e)
         {
-            value = available; if (value == 0)
+            value = Convert.ToInt64(this.available);
+            if (value == 0)
             {
-                MessageBox.Show("You do not have enough funds to play the game, deposit and come back again!");
-                DialogResult = DialogResult.Cancel;
-                return;
+                value = 1;
             }
-            DialogResult = DialogResult.OK;
+            numericUpDown1.Value = Convert.ToDecimal(value);
         }
     }
 }
