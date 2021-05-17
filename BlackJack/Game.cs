@@ -49,8 +49,6 @@ namespace Prototyping_of_Project
             int sumPlayerAce = 0;
             int sumDealer = 0;
             int sumDealerAce = 0;
-            bool playerAce = false;
-            bool dealerAce = false;
             foreach (Card card in playerCards){
                 if (card.isAce()){
                     sumPlayer += 1;

@@ -12,6 +12,7 @@ namespace Prototyping_of_Project
 {
     public partial class Form1 : Form {
         //All variables
+        private bool goingUp;
         public List<PictureBox> dealerPic;
         public List<PictureBox> playerPic;
         public List<Card> dealerCards;
@@ -256,7 +257,6 @@ namespace Prototyping_of_Project
 
         //A quick function to update the funds label of the form
         private void updateFunds(){
-            string str = "";
             long tmp = funds;
             List<long> ints = new List<long>();
             while (tmp > 0){
@@ -401,6 +401,47 @@ namespace Prototyping_of_Project
             {
                 funds -= withdraw.withdraw_amount;
                 updateFunds();
+            }
+        }
+
+        //A simple event caller function that toggles the showcasing of the player's balance and clearing up the game a little
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+            int shouldBeL = 9;
+            int shouldBe = 40;
+            goingUp = (shouldBeL <= label1.Top && shouldBe <= lblFunds.Top);
+            timerAnim.Interval = 3;
+            timerAnim.Start();
+        }
+
+        private void timerAnim_Tick(object sender, EventArgs e)
+        {
+            if (this.goingUp && label1.Location.Y > -90 && lblFunds.Location.Y > -90)
+            {
+                int labelp = label1.Location.Y - 10;
+                int fundsp = lblFunds.Location.Y - 10;
+                label1.Location = new Point(label1.Location.X, labelp);
+                lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
+                return;
+            }
+            else if (this.goingUp)
+            {
+                timerAnim.Stop();
+                button1.Enabled = true;
+            }
+            if(!this.goingUp && label1.Location.Y <= 9 && lblFunds.Location.Y <= 40)
+            {
+                int labelp = label1.Location.Y + 10;
+                int fundsp = lblFunds.Location.Y + 10;
+                label1.Location = new Point(label1.Location.X, labelp);
+                lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
+                return;
+            }
+            else if (!this.goingUp)
+            {
+                timerAnim.Stop();
+                button1.Enabled = true;
             }
         }
     }

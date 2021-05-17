@@ -31,6 +31,7 @@ namespace Prototyping_of_Project
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dealer1 = new System.Windows.Forms.PictureBox();
             this.dealer2 = new System.Windows.Forms.PictureBox();
@@ -55,6 +56,8 @@ namespace Prototyping_of_Project
             this.lblPlaye = new System.Windows.Forms.Label();
             this.btnJustStart = new System.Windows.Forms.Button();
             this.btnWithdraw = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.timerAnim = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).BeginInit();
@@ -260,6 +263,7 @@ namespace Prototyping_of_Project
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.Location = new System.Drawing.Point(919, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 31);
@@ -272,9 +276,12 @@ namespace Prototyping_of_Project
             this.lblFunds.BackColor = System.Drawing.Color.Transparent;
             this.lblFunds.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFunds.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblFunds.Image = ((System.Drawing.Image)(resources.GetObject("lblFunds.Image")));
             this.lblFunds.Location = new System.Drawing.Point(919, 40);
+            this.lblFunds.MaximumSize = new System.Drawing.Size(320, 50);
+            this.lblFunds.MinimumSize = new System.Drawing.Size(320, 50);
             this.lblFunds.Name = "lblFunds";
-            this.lblFunds.Size = new System.Drawing.Size(62, 46);
+            this.lblFunds.Size = new System.Drawing.Size(320, 50);
             this.lblFunds.TabIndex = 3;
             this.lblFunds.Text = "0$";
             this.lblFunds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -358,6 +365,23 @@ namespace Prototyping_of_Project
             this.btnWithdraw.UseVisualStyleBackColor = true;
             this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Green;
+            this.button1.Location = new System.Drawing.Point(1027, 159);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(236, 80);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Toggle Balance";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // timerAnim
+            // 
+            this.timerAnim.Interval = 18;
+            this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -365,6 +389,7 @@ namespace Prototyping_of_Project
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1275, 689);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.my4);
             this.Controls.Add(this.my3);
             this.Controls.Add(this.lblPlaye);
@@ -414,7 +439,6 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.PictureBox dealer1;
         private System.Windows.Forms.PictureBox dealer2;
         private System.Windows.Forms.PictureBox dealer3;
-        private System.Windows.Forms.PictureBox e;
         private System.Windows.Forms.PictureBox dealer4;
         private System.Windows.Forms.PictureBox dealer5;
         private System.Windows.Forms.PictureBox my1;
@@ -435,6 +459,8 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.Label lblPlaye;
         private System.Windows.Forms.Button btnJustStart;
         private System.Windows.Forms.Button btnWithdraw;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timerAnim;
     }
 }
 
