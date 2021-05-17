@@ -37,7 +37,7 @@
     <li>Start. Which takes your previous bet and bets with the same amount if you have enough funds.</li>
 </ul>
 <hr>
-<h2>Last updated on 16th of May, 2021, 1:55AM.</h2>
+<h2>Last updated on 17th of May, 2021, 9:50PM.</h2>
 <h4>The whole thing initial game was done in less than 12 hours!
 Bug fixes have been coming to the game every 5-6 hours, as of now.
 More updates to follow!</h4>
