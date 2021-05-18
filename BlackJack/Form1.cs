@@ -208,12 +208,16 @@ namespace Prototyping_of_Project
             btnStand.Enabled = false;
             btnHit.Enabled = false;
             btnDouble.Enabled = false;
+            bool firstDealer = true; ;
             if (game.gameStarted == false)
                 return;
             game.stand();
             while (game.checkForWin() == "continue"){
                 await Task.Delay(800);
-                hit(false);
+                if (firstDealer)
+                {
+                    hit(false);
+                }
                 updateCards();
             }
             end();
@@ -236,7 +240,10 @@ namespace Prototyping_of_Project
         private void updateCards(){
             for (int i = 0; i < 6 && i < dealerCards.Count; i++){
                 if (!usedDealer[i]){
-                    dealerPic[i].Image = dealerCards[i].image;
+                    if (i != 1)
+                    {
+                        dealerPic[i].Image = dealerCards[i].image;
+                    }
                     usedDealer[i] = true;
                 }
             }
@@ -285,80 +292,6 @@ namespace Prototyping_of_Project
             lblFunds.Text = xx + "$";
         }
 
-        //A function used whenever one of the two hits.
-        //Entry parameter is wether the one hitting is the player, if so, the value to send as an argument is true.
-        //Otherwise it's false.
-        private void hit(Boolean player)
-        {
-            if (game.gameStarted == false)
-                return;
-            btnDouble.Visible = false;
-            Card c = game.getCard(true);
-            if (player){
-                playerCards.Add(c);
-                game.playerCards.Add(c);
-                int index = 0;
-                for (int i = 0; i < 6; i++){
-                    if (usedPlayer[i] == false){
-                        index = i;
-                        break;
-                    }
-                }
-                if(game.checkForWin() == "blackjack"){
-                    btnHit.Enabled = false;
-                    btnStand.Enabled = false;
-                }
-                playerPic[index].Location = new Point(playerPic[index].Location.X, 947);
-                playerPic[index].Image = c.image;
-                PictureBox playerAnimPicAnon = playerPic[index];
-                if (!playerAnimStarted1){
-                    btnHit.Enabled = false;
-                    btnStand.Enabled = false;
-                    btnDouble.Enabled = false;
-                    playerAnimStarted1 = true;
-                    playerAnimPic1 = playerAnimPicAnon;
-                    playerAnim.Start();
-                }
-                else{
-                    btnHit.Enabled = false;
-                    btnStand.Enabled = false;
-                    btnDouble.Enabled = false;
-                    playerAnimStarted2 = true;
-                    playerAnimPic2 = playerAnimPicAnon;
-                    playerAnim2.Start();
-                }
-            }
-            else{
-                dealerCards.Add(c);
-                game.dealerCards.Add(c);
-                int index = 0;
-                for (int i = 0; i < 6; i++){
-                    if (usedDealer[i] == false){
-                        index = i;
-                        break;
-                    }
-                }
-                dealerPic[index].Location = new Point(dealerPic[index].Location.X, -485);
-                dealerPic[index].Image = c.image;
-                game.getCards();
-                lblDealer.Text = game.currentDealer;
-                lblPlaye.Text = game.currentPlayer;
-                PictureBox dealerPicAnon = dealerPic[index];
-                dealerAnimStarted = true;
-                dealerAnimPic = dealerPicAnon;
-                dealerAnim.Start();
-
-                if (game.checkForWin() == "blackjack"){
-                    btnHit.Enabled = false;
-                    btnStand.Enabled = false;
-                }
-            }
-            if (game.checkForWin() == "blackjack"){
-                btnHit.Enabled = false;
-                btnStand.Enabled = false;
-            }
-            updateCards();
-        }
 
         //A function that checks for an end and if one is seen 
         //The game is being resetted while you are told that you lost/won and how much, etc etc.
@@ -513,6 +446,7 @@ namespace Prototyping_of_Project
                     btnDouble.Enabled = true;
                 }
             }
+
         }
 
         private void dealerAnim_Tick(object sender, EventArgs e)
@@ -553,6 +487,158 @@ namespace Prototyping_of_Project
                     btnDouble.Enabled = true;
                 }
             }
+        }
+        private Size oldSize;
+        private void Form1_Load(object sender, EventArgs e) => oldSize = base.Size;
+
+        protected override void OnResize(System.EventArgs e)
+        {
+            base.OnResize(e);
+
+            foreach (Control cnt in this.Controls)
+                ResizeAll(cnt, base.Size);
+
+            oldSize = base.Size;
+        }
+        private void ResizeAll(Control control, Size newSize)
+        {
+            int width = newSize.Width - oldSize.Width;
+            control.Left += (control.Left * width) / oldSize.Width;
+            control.Width += (control.Width * width) / oldSize.Width;
+
+            int height = newSize.Height - oldSize.Height;
+            control.Top += (control.Top * height) / oldSize.Height;
+            control.Height += (control.Height * height) / oldSize.Height;
+        }
+
+        private bool growing;
+        private bool firstDealer = false;
+        private void resizeStart()
+        {
+            firstDealer = true;
+            growing = false;
+            resizeTimer.Start();
+        }
+        private void resizeTimer_Tick(object sender, EventArgs e)
+        {
+            int size = dealer2.Size.Height;
+            if (size <= 10 && !growing)
+            {
+                dealer2.Image = dealerCards[1].image;
+                size = 10;
+                growing = true;
+            }
+            if (size >= 214 && growing)
+            {
+                size = 214;
+                dealer2.Size = new Size(dealer2.Size.Width, size);
+                resizeTimer.Stop();
+                dealer2.Size = new Size(dealer2.Size.Width, 214);
+                return;
+            }
+            if(!growing)
+                size-=25;
+            else if (growing)
+                size+=25;
+            dealer2.Size = new Size(dealer2.Size.Width, size);
+        }
+
+
+        //A function used whenever one of the two hits.
+        //Entry parameter is wether the one hitting is the player, if so, the value to send as an argument is true.
+        //Otherwise it's false.
+        private void hit(Boolean player)
+        {
+            if (game.gameStarted == false)
+                return;
+            btnDouble.Visible = false;
+            Card c = game.getCard(true);
+            if (player)
+            {
+                playerCards.Add(c);
+                game.playerCards.Add(c);
+                int index = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    if (usedPlayer[i] == false)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if (game.checkForWin() == "blackjack")
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                }
+                playerPic[index].Location = new Point(playerPic[index].Location.X, 947);
+                playerPic[index].Image = c.image;
+                PictureBox playerAnimPicAnon = playerPic[index];
+                if (!playerAnimStarted1)
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                    btnDouble.Enabled = false;
+                    playerAnimStarted1 = true;
+                    playerAnimPic1 = playerAnimPicAnon;
+                    playerAnim.Start();
+                }
+                else
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                    btnDouble.Enabled = false;
+                    playerAnimStarted2 = true;
+                    playerAnimPic2 = playerAnimPicAnon;
+                    playerAnim2.Start();
+                }
+            }
+            else
+            {
+                dealerCards.Add(c);
+                game.dealerCards.Add(c);
+                int index = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    if (usedDealer[i] == false)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if (index == 1)
+                {
+                    resizeStart();
+                    firstDealer = true;
+                }
+                if (!firstDealer)
+                {
+                    dealerPic[index].Location = new Point(dealerPic[index].Location.X, -485);
+                    dealerPic[index].Image = c.image;
+                }
+                game.getCards();
+                lblDealer.Text = game.currentDealer;
+                lblPlaye.Text = game.currentPlayer;
+                PictureBox dealerPicAnon = dealerPic[index];
+                dealerAnimStarted = true;
+                dealerAnimPic = dealerPicAnon;
+                if (!firstDealer)
+                    dealerAnim.Start();
+                else
+                    firstDealer = false;
+
+                if (game.checkForWin() == "blackjack")
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                }
+            }
+            if (game.checkForWin() == "blackjack")
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+            }
+            updateCards();
         }
     }
 }

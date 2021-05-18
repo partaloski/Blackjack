@@ -61,6 +61,7 @@ namespace Prototyping_of_Project
             this.dealerAnim = new System.Windows.Forms.Timer(this.components);
             this.playerAnim = new System.Windows.Forms.Timer(this.components);
             this.playerAnim2 = new System.Windows.Forms.Timer(this.components);
+            this.resizeTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).BeginInit();
@@ -400,6 +401,11 @@ namespace Prototyping_of_Project
             this.playerAnim2.Interval = 1;
             this.playerAnim2.Tick += new System.EventHandler(this.playerAnim2_Tick);
             // 
+            // resizeTimer
+            // 
+            this.resizeTimer.Interval = 1;
+            this.resizeTimer.Tick += new System.EventHandler(this.resizeTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -482,6 +488,7 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.Timer dealerAnim;
         private System.Windows.Forms.Timer playerAnim;
         private System.Windows.Forms.Timer playerAnim2;
+        private System.Windows.Forms.Timer resizeTimer;
     }
 }
 
