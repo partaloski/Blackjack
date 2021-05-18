@@ -115,8 +115,6 @@ namespace Prototyping_of_Project
                 updateCards();
                 end();
                 updateFunds();
-                btnStand.Enabled = true;
-                btnHit.Enabled = true;
             }
         }
 
@@ -144,8 +142,6 @@ namespace Prototyping_of_Project
             updateCards();
             end();
             updateFunds();
-            btnStand.Enabled = true;
-            btnHit.Enabled = true;
         }
         //We wrote a specific function so that the code can be reused.
         private void start(){
@@ -216,7 +212,7 @@ namespace Prototyping_of_Project
                 return;
             game.stand();
             while (game.checkForWin() == "continue"){
-                await Task.Delay(1250);
+                await Task.Delay(1000);
                 hit(false);
                 updateCards();
             }
@@ -380,7 +376,7 @@ namespace Prototyping_of_Project
                 funds += x;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                Task.Delay(1000);
+                await Task.Delay(750);
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
             else if (outx == "player")
@@ -388,14 +384,14 @@ namespace Prototyping_of_Project
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet * 2;
-                Task.Delay(1000);
+                await Task.Delay(750);
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
             else if (outx == "dealerBlackjack")
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                Task.Delay(1000);
+                await Task.Delay(750);
                 MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
             }
             else if (outx == "push")
@@ -403,14 +399,14 @@ namespace Prototyping_of_Project
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet;
-                Task.Delay(1000);
+                await Task.Delay(750);
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
             }
             else if(outx == "dealer")
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                Task.Delay(1000);
+                await Task.Delay(750);
                 MessageBox.Show("YOU LOST " + (bet).ToString() + ", THE DEALER HAS WON! Better luck next time!");
             }
             else if (outx == "continue") return;
