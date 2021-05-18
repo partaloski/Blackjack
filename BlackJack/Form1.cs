@@ -12,9 +12,9 @@ namespace Prototyping_of_Project
 {
     public partial class Form1 : Form {
         //All variables
+        private bool dealerAnimStarted;
         private bool playerAnimStarted1;
         private bool playerAnimStarted2;
-        private bool dealerAnimStarted;
         private bool goingUp;
         private bool goingDownP1;
         private bool goingDownP2;
@@ -58,13 +58,14 @@ namespace Prototyping_of_Project
             }
 
             Image img = Image.FromFile("./PNG/empty.png");
+            //Asssigned values to all PictureBoxes for the player
             my1.Image = img;
             my2.Image = img;
             my3.Image = img;
             my4.Image = img;
             my5.Image = img;
             my6.Image = img;
-
+            //Asssigned values to all PictureBoxes for the dealer
             dealer1.Image = img;
             dealer2.Image = img;
             dealer3.Image = img;
@@ -78,6 +79,7 @@ namespace Prototyping_of_Project
             updateFunds();
             playerAnimStarted1 = false;
             playerAnimStarted2 = false;
+            dealerAnimStarted = false;
             goingDownP1 = false;
             goingDownP2 = false;
         }
@@ -122,8 +124,7 @@ namespace Prototyping_of_Project
         //A function for the just start button
         private void btnJustStart_Click(object sender, EventArgs e)
         {
-            if (StartGame.lastBet > funds)
-            {
+            if (StartGame.lastBet > funds){
                 MessageBox.Show("You do not have funds to start the game.");
                 return;
             }
@@ -197,8 +198,7 @@ namespace Prototyping_of_Project
             else{
                 MessageBox.Show("Cannot bet double since your funds are low.");
             }
-            if(game.checkForWin() == "continue")
-            {
+            if(game.checkForWin() == "continue"){
                 btnStand.Enabled = true;
                 btnHit.Enabled = true;
             }
@@ -212,7 +212,7 @@ namespace Prototyping_of_Project
                 return;
             game.stand();
             while (game.checkForWin() == "continue"){
-                await Task.Delay(1000);
+                await Task.Delay(800);
                 hit(false);
                 updateCards();
             }
@@ -221,8 +221,7 @@ namespace Prototyping_of_Project
 
         //Hit button function
         private  void btnHit_Click(object sender, EventArgs e){
-            if (game.gameStarted == false)
-            {
+            if (game.gameStarted == false){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 return;
@@ -305,16 +304,14 @@ namespace Prototyping_of_Project
                         break;
                     }
                 }
-                if(game.checkForWin() == "blackjack")
-                {
+                if(game.checkForWin() == "blackjack"){
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                 }
                 playerPic[index].Location = new Point(playerPic[index].Location.X, 947);
                 playerPic[index].Image = c.image;
                 PictureBox playerAnimPicAnon = playerPic[index];
-                if (!playerAnimStarted1)
-                {
+                if (!playerAnimStarted1){
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                     btnDouble.Enabled = false;
@@ -322,8 +319,7 @@ namespace Prototyping_of_Project
                     playerAnimPic1 = playerAnimPicAnon;
                     playerAnim.Start();
                 }
-                else
-                {
+                else{
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                     btnDouble.Enabled = false;
@@ -352,14 +348,12 @@ namespace Prototyping_of_Project
                 dealerAnimPic = dealerPicAnon;
                 dealerAnim.Start();
 
-                if (game.checkForWin() == "blackjack")
-                {
+                if (game.checkForWin() == "blackjack"){
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                 }
             }
-            if (game.checkForWin() == "blackjack")
-            {
+            if (game.checkForWin() == "blackjack"){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
             }
@@ -376,37 +370,33 @@ namespace Prototyping_of_Project
                 funds += x;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                await Task.Delay(750);
+                await Task.Delay(400);
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "player")
-            {
+            else if (outx == "player"){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet * 2;
-                await Task.Delay(750);
+                await Task.Delay(400);
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "dealerBlackjack")
-            {
+            else if (outx == "dealerBlackjack"){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                await Task.Delay(750);
+                await Task.Delay(400);
                 MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
             }
-            else if (outx == "push")
-            {
+            else if (outx == "push"){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet;
-                await Task.Delay(750);
+                await Task.Delay(400);
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
             }
-            else if(outx == "dealer")
-            {
+            else if(outx == "dealer"){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
-                await Task.Delay(750);
+                await Task.Delay(400);
                 MessageBox.Show("YOU LOST " + (bet).ToString() + ", THE DEALER HAS WON! Better luck next time!");
             }
             else if (outx == "continue") return;
@@ -426,26 +416,22 @@ namespace Prototyping_of_Project
             btnHit.Enabled = false;
         }
 
-        private void btnWithdraw_Click(object sender, EventArgs e)
-        {
-            if (funds == 0)
-            {
+        private void btnWithdraw_Click(object sender, EventArgs e){
+            if (funds == 0){
                 MessageBox.Show("You cannot refund since you do not have enough chips.");
                 return;
             }
             Withdraw withdraw = new Withdraw(funds);
             
             withdraw.ShowDialog();
-            if (withdraw.DialogResult == DialogResult.Yes)
-            {
+            if (withdraw.DialogResult == DialogResult.Yes){
                 funds -= withdraw.withdraw_amount;
                 updateFunds();
             }
         }
 
         //A simple event caller function that toggles the showcasing of the player's balance and clearing up the game a little
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e){
             button1.Enabled = false;
             int shouldBeL = 9;
             int shouldBe = 40;
@@ -454,38 +440,32 @@ namespace Prototyping_of_Project
             timerAnim.Start();
         }
 
-        private void timerAnim_Tick(object sender, EventArgs e)
-        {
-            if (this.goingUp && label1.Location.Y > -90 && lblFunds.Location.Y > -90)
-            {
+        private void timerAnim_Tick(object sender, EventArgs e){
+            if (this.goingUp && label1.Location.Y > -90 && lblFunds.Location.Y > -90){
                 int labelp = label1.Location.Y - 10;
                 int fundsp = lblFunds.Location.Y - 10;
                 label1.Location = new Point(label1.Location.X, labelp);
                 lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
                 return;
             }
-            else if (this.goingUp)
-            {
+            else if (this.goingUp){
                 timerAnim.Stop();
                 button1.Enabled = true;
             }
-            if(!this.goingUp && label1.Location.Y <= 9 && lblFunds.Location.Y <= 40)
-            {
+            if(!this.goingUp && label1.Location.Y <= 9 && lblFunds.Location.Y <= 40){
                 int labelp = label1.Location.Y + 10;
                 int fundsp = lblFunds.Location.Y + 10;
                 label1.Location = new Point(label1.Location.X, labelp);
                 lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
                 return;
             }
-            else if (!this.goingUp)
-            {
+            else if (!this.goingUp){
                 timerAnim.Stop();
                 button1.Enabled = true;
             }
         }
 
-        private void animatePlayerCardOne()
-        {
+        private void animatePlayerCardOne(){
             if (playerAnimPic1.Top == 447)
                 goingDownP1 = true;
             else
@@ -493,8 +473,7 @@ namespace Prototyping_of_Project
             playerAnim.Start();
         }
 
-        private void animatePlayerCardTwo()
-        {
+        private void animatePlayerCardTwo(){
             if (playerAnimPic2.Top == 447)
                 goingDownP2 = true;
             else
