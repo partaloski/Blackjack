@@ -95,6 +95,7 @@ namespace Prototyping_of_Project
                 currentDealer = sumDealer.ToString();
             return ints;
         }
+
         //A function I used to use back in the early stages to see if multiple aces were into a given list of cards
         private bool OneOrNone(List<Card> cards){
             int i = 0;
@@ -103,6 +104,7 @@ namespace Prototyping_of_Project
             }
             return i < 2;
         }
+
         //A function that checks if there is a win
         //Returns "continue" that means the game hasn't come to an end
         //Returns "blackjack" that means the player won by a blackjack

@@ -1,0 +1,125 @@
+<head>
+	<title>Blackjack Documentation</title>
+</head>
+
+<body style="font-family: 'Calibri'">
+<div style="width: 100%; display: inline-block;">
+<h1 style="color: #1CCD1C; display: inline; float: left; margin-left: 150px">BlackJack in C# using Windows Forms</h1>
+<a style="float:left; font-size: 240%; margin-top: 15px; margin-left: 75px; font-weight: bold;" href="https://github.com/partaloski/Blackjack">GITHUB</a>
+</div>
+<hr>
+<h2 style="color:#1CCD1C ">1) Што е BlackJack?</h2>
+<div style="margin-left: 25px; border: 2px solid gray; border-radius: 10px; padding: 20px">
+<p>BlackJack e тип на игра во која целта е да се победи дилерот, или оној кој ни дава карти, на начин што ние ќе стигнеме се поблиску до 21, со сумата на вредностите на картите, без да го пречекориме тој број.</p>
+<p>Вредноста на картата најчесто е бројот кој е напишан на истата, без разлика на бојата на картата, со исклучок ни се J, Q, K, и Ace (A) <br>
+Вредноста на „J, Q, K“ картите е 10. Секоја од тие карти вреди 10.
+Вредноста на „А“ картата, додека сме под 21 вреди 11, а доколку го пречекориме бројот 21, вредноста на картата автоматски се менува во 1.
+<br>
+Добивката која ние ја добиваме на крај зависи од тоа дали ние сме имале Блекџек, што се мисли на тоа дали сме имале еден Кец („А“) и уште една карта од - „10, J, Q, K“. При овој случај, ние добиваме 3/2 + нашата кладба.
+<br>
+Во секој друг случај добиваме дупло од тоа што ни бил влог.
+<br>
+Играчот има опција „<strong>Hit</strong>“ и опција „<strong>Stand</strong>“, а покрај нив има и „<strong>Double</strong>“.
+<br>
+Уште едно нешто кое што сакам да го напоменам е дека дилерот има исти опции како нас, но не може да оди „Hit“ кога сумата на неговите карти е 17.
+</p>
+<p>
+Што значат тие опции:
+<ul>
+	<li><strong>Double</strong> - При избор на оваа опција, која е достапна само при делењето на првичните 2 карти, и значи дека добиваме уште една карта но го дуплираме влогот.</li>
+	<li><strong>Hit</strong> - Што значи дека бараме уште една дополнителна карта.</li>
+	<li><strong>Stand</strong> - Што значи дека сме задоволни со картите кои ги имаме во моментот, па не сакаме ништо повеќе.</li>
+</ul>
+</div>
+</p>
+<hr><br>
+<h2 style="color:#1CCD1C ">2) Како јас го решив проблемот</h2>
+<div style="margin-left: 25px; border: 2px solid gray; border-radius: 10px; padding: 20px">
+<p>
+	Прво почнав со изработка на излгед на формата, поставив по 6 слики за карти на дилер, и 6 слики за карти на играч.
+	Поставив и 2 лабели во кои реков дека ќе чувам сума на моменталните карти за секој од играчот и дилерот.
+	Потоа, поставив копчиња Старт, Внес, Hit, Stand, Double.
+	Додадов настани за сите и составив едноставни функции и форми за внес на кредити и за кладење со истите.
+	За да добијам игра која работи користам класи:
+	<ul>
+		<li> <strong>Card</strong> - или карта, во која чувам 3 податоци, стринг за вредност на картата, стринг за тип на картата или боја, и уште еден објект од тип Слика, која ја генерирам од фајл со помош на првите 2 стрингови.</li>
+		<li> <strong>Deck</strong> - или шпил карти, во кој само генерирам еден шпил на карти составен од 4 пати секоја карта, со цел да секогаш имам карти на располагање, па истите карти ги додавам во Листа, и истата ја мешам користејќи случајни 2 индекси и ги менувам објектите од тип Карта кој се наоѓа на случајно добиената позиција „индекс1“ со Картата на позиција „индекс2“</li>
+		<li> <strong>Game</strong> - ова е функцијата која е срцето на оваа апликација, во неа се содржат - Листа од Картите на играчот, Листа од Картите на дилерот, Сума на Карти на Дилерот, Сума од Картите на Играчот, Булова променлива која означува дали играчот е на „Stand“ </li>
+	</ul>
+</p>
+</div>
+<hr><br>
+<h2 style="color:#1CCD1C ">3) Опис на една од постапките</h2>
+<div style="margin-left: 25px; border: 2px solid gray; border-radius: 10px; padding: 20px">
+
+<p>
+	Како пример сакам да ја земам функцијата checkForWin од класата Game.
+	<pre style="background-color: #1C1C1C; color: #1CCD1C; border-radius: 60px;">
+	
+        //A function that checks if there is a win
+        //Returns "continue" that means the game hasn't come to an end
+        //Returns "blackjack" that means the player won by a blackjack
+        //Returns "dealer" that means the game has come to an end and the dealer won.
+        //Returns "player" that means the game has come to an end and the player won.
+        public string checkForWin(){
+            int[] f = getCards();
+            int sumPlayer = f[0];
+            int sumPlayerA = f[1];
+            int sumDealer = f[2];
+            int sumDealerA = f[3];
+            int player = Math.Max(sumPlayer, sumPlayerA);
+            int dealer = Math.Max(sumDealer, sumDealerA);
+            if (player == 21 && playerCards.Count == 2)
+                return "blackjack"; 
+            else if (player > 21)
+                return "dealer";
+            else if (dealer > 21)
+                return "player";
+            else if (dealer == 21 && dealerCards.Count == 2)
+                return "dealerBlackjack";
+            else if (dealer == 17){
+                if (player > dealer)
+                    return "player";
+                else if (player < dealer)
+                    return "dealer";
+                else
+                    return "push";
+            }
+            else if (playerStood){
+                if (dealer > player)
+                    return "dealer";
+                else if (dealer == player)
+                    return "push";
+                else
+                    return "continue";
+            }
+            else
+                return "continue";
+        }
+	</pre>
+	</p>
+	Каде, функцијата „getCards“ ни враќа низа од сума на картите на дилерот, сума на картите на играчот, во 2 верзии, односно, една каде картата „А“ има вредност 11, а друга каде има вредност 1.
+	<p>Првиот услов ни е дали играчот има блекџек, па како што напоменав погоре блекџек имаме само кога имаме сума 21, која се создава само од 2 карти, оние кои ги имаме на почеток кои ни ги дели дилерот.
+	</p><p>Па вториот услов ни е дали ние имаме вредност која е поголема од 21, при што автоматски губиме.
+	</p><p>А ако дилерот има вредност поголема од 21, тој губи.
+	</p><p>Доколку дилерот има блекџек, тој победува, без да ни се даде нас опција.
+	</p><p>Па тука имаме еден специјален услов, оној за кој би напоменав погоре дека дилерот мора да оди „Stand“ кога сумата на картите е 17, при што победува оној кој има поголема сума на картите.
+	</p><p>„Push“ значи дека ние ги добиваме вложените пари назад, што значи имаме иста сума на карти со дилерот.
+	</p><p>Последниот блок на услови ни е што се случува при „Stand“ на играчот, кога дилерот зема карти се додека не добие ист износ како нашиот или поголем износ.
+	</p><p>Вредноста „continue“ која се враќа значи дека нема победник и дека играта продолжува. 
+</p>
+</div>
+<div style="width: 74%; margin-left: 12.5%; margin-top: 75px; background-color: lightgreen; border: 5px dotted black; border-radius: 40px; padding: 40px">
+
+<img src="../Screenshots/01.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/02.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/03.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/04.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/05.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/06.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/07.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/08.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/09.jpg" style="width: 520px; height: auto; margin: 15px">
+<img src="../Screenshots/10.jpg" style="width: 520px; height: auto; margin: 15px">
+</div>
+</body>
