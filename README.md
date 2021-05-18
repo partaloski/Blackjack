@@ -37,10 +37,12 @@
     <li>Start. Which takes your previous bet and bets with the same amount if you have enough funds.</li>
 </ul>
 <hr>
-<h2>Last updated on 18th of May, 2021, 3:24PM.</h2>
+<h2>Last updated on 18th of May, 2021, 7:04PM.</h2>
 <h4>The whole thing initial game was done in less than 12 hours!
 Bug fixes have been coming to the game every 5-6 hours, as of now.
 More updates to follow!</h4>
+<p>One known bug is the option that the game doesn't scale well on the 100% display scailling setting, since I made it on a laptop, in order to get the proper experience, run your display at 125% Scailling, and then start the game again!.
+Trying to work out a fix! </p>
 
 <hr>
 <h2 style="color: red; font-weight: bold; display: inline;">IN ORDER TO RUN THE GAME:</h2> <h3 style="color: red;">Go to: /Prototyping of Project/bin/debug/netcoreapp3.1/BlackJack.exe</h3>
