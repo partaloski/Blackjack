@@ -58,6 +58,9 @@ namespace Prototyping_of_Project
             this.btnWithdraw = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.timerAnim = new System.Windows.Forms.Timer(this.components);
+            this.dealerAnim = new System.Windows.Forms.Timer(this.components);
+            this.playerAnim = new System.Windows.Forms.Timer(this.components);
+            this.playerAnim2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).BeginInit();
@@ -382,6 +385,21 @@ namespace Prototyping_of_Project
             this.timerAnim.Interval = 18;
             this.timerAnim.Tick += new System.EventHandler(this.timerAnim_Tick);
             // 
+            // dealerAnim
+            // 
+            this.dealerAnim.Interval = 1;
+            this.dealerAnim.Tick += new System.EventHandler(this.dealerAnim_Tick);
+            // 
+            // playerAnim
+            // 
+            this.playerAnim.Interval = 1;
+            this.playerAnim.Tick += new System.EventHandler(this.playerAnim_Tick);
+            // 
+            // playerAnim2
+            // 
+            this.playerAnim2.Interval = 1;
+            this.playerAnim2.Tick += new System.EventHandler(this.playerAnim2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -461,6 +479,9 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.Button btnWithdraw;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timerAnim;
+        private System.Windows.Forms.Timer dealerAnim;
+        private System.Windows.Forms.Timer playerAnim;
+        private System.Windows.Forms.Timer playerAnim2;
     }
 }
 

@@ -12,7 +12,16 @@ namespace Prototyping_of_Project
 {
     public partial class Form1 : Form {
         //All variables
+        private bool playerAnimStarted1;
+        private bool playerAnimStarted2;
+        private bool dealerAnimStarted;
         private bool goingUp;
+        private bool goingDownP1;
+        private bool goingDownP2;
+        private bool goingDownD;
+        private PictureBox playerAnimPic1;
+        private PictureBox playerAnimPic2;
+        private PictureBox dealerAnimPic;
         public List<PictureBox> dealerPic;
         public List<PictureBox> playerPic;
         public List<Card> dealerCards;
@@ -67,6 +76,10 @@ namespace Prototyping_of_Project
             playerCards = new List<Card>();
             //setting funds to starting ps;
             updateFunds();
+            playerAnimStarted1 = false;
+            playerAnimStarted2 = false;
+            goingDownP1 = false;
+            goingDownP2 = false;
         }
 
         //First, you need to deposit money to play.
@@ -211,7 +224,7 @@ namespace Prototyping_of_Project
         }
 
         //Hit button function
-        private void btnHit_Click(object sender, EventArgs e){
+        private  void btnHit_Click(object sender, EventArgs e){
             if (game.gameStarted == false)
             {
                 btnHit.Enabled = false;
@@ -301,7 +314,27 @@ namespace Prototyping_of_Project
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                 }
+                playerPic[index].Location = new Point(playerPic[index].Location.X, 947);
                 playerPic[index].Image = c.image;
+                PictureBox playerAnimPicAnon = playerPic[index];
+                if (!playerAnimStarted1)
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                    btnDouble.Enabled = false;
+                    playerAnimStarted1 = true;
+                    playerAnimPic1 = playerAnimPicAnon;
+                    playerAnim.Start();
+                }
+                else
+                {
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                    btnDouble.Enabled = false;
+                    playerAnimStarted2 = true;
+                    playerAnimPic2 = playerAnimPicAnon;
+                    playerAnim2.Start();
+                }
             }
             else{
                 dealerCards.Add(c);
@@ -313,10 +346,15 @@ namespace Prototyping_of_Project
                         break;
                     }
                 }
+                dealerPic[index].Location = new Point(dealerPic[index].Location.X, -485);
                 dealerPic[index].Image = c.image;
                 game.getCards();
                 lblDealer.Text = game.currentDealer;
                 lblPlaye.Text = game.currentPlayer;
+                PictureBox dealerPicAnon = dealerPic[index];
+                dealerAnimStarted = true;
+                dealerAnimPic = dealerPicAnon;
+                dealerAnim.Start();
 
                 if (game.checkForWin() == "blackjack")
                 {
@@ -334,7 +372,7 @@ namespace Prototyping_of_Project
 
         //A function that checks for an end and if one is seen 
         //The game is being resetted while you are told that you lost/won and how much, etc etc.
-        private void end(){
+        private async void end(){
             string outx = game.checkForWin();
             updateCards();
             if (outx == "blackjack"){ 
@@ -342,6 +380,7 @@ namespace Prototyping_of_Project
                 funds += x;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                Task.Delay(1000);
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
             else if (outx == "player")
@@ -349,12 +388,14 @@ namespace Prototyping_of_Project
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet * 2;
+                Task.Delay(1000);
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
             else if (outx == "dealerBlackjack")
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                Task.Delay(1000);
                 MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
             }
             else if (outx == "push")
@@ -362,12 +403,14 @@ namespace Prototyping_of_Project
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet;
+                Task.Delay(1000);
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
             }
             else if(outx == "dealer")
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                Task.Delay(1000);
                 MessageBox.Show("YOU LOST " + (bet).ToString() + ", THE DEALER HAS WON! Better luck next time!");
             }
             else if (outx == "continue") return;
@@ -442,6 +485,98 @@ namespace Prototyping_of_Project
             {
                 timerAnim.Stop();
                 button1.Enabled = true;
+            }
+        }
+
+        private void animatePlayerCardOne()
+        {
+            if (playerAnimPic1.Top == 447)
+                goingDownP1 = true;
+            else
+                goingDownP1 = false;
+            playerAnim.Start();
+        }
+
+        private void animatePlayerCardTwo()
+        {
+            if (playerAnimPic2.Top == 447)
+                goingDownP2 = true;
+            else
+                goingDownP2 = false;
+            playerAnim2.Start();
+        }
+
+        private void animateDealerCard()
+        {
+            //15
+            if (dealerAnimPic.Top == 15)
+                goingDownD = true;
+            else
+                goingDownD = false;
+            dealerAnim.Start();
+        }
+
+        private void playerAnim_Tick(object sender, EventArgs e)
+        {
+            btnHit.Enabled = false;
+            btnStand.Enabled = false;
+            btnDouble.Enabled = false;
+            int pos;
+            if (goingDownP1)
+                pos = playerAnimPic1.Top + 25;
+            else
+                pos = playerAnimPic1.Top - 25;
+            playerAnimPic1.Location = new Point(playerAnimPic1.Location.X, pos);
+            if (playerAnimPic1.Top == 947 || playerAnimPic1.Top == 447)
+            {
+                playerAnimStarted1 = false;
+                playerAnim.Stop();
+                if (!playerAnimStarted1 && !playerAnimStarted2)
+                {
+                    btnHit.Enabled = true;
+                    btnStand.Enabled = true;
+                    btnDouble.Enabled = true;
+                }
+            }
+        }
+
+        private void dealerAnim_Tick(object sender, EventArgs e)
+        {
+            int pos;
+            if (goingDownD)
+                pos = dealerAnimPic.Top - 25;
+            else
+                pos = dealerAnimPic.Top + 25;
+            dealerAnimPic.Location = new Point(dealerAnimPic.Location.X, pos);
+            if (dealerAnimPic.Top == 15 || dealerAnimPic.Top == -485)
+            {
+                dealerAnimStarted = false;
+                dealerAnim.Stop();
+            }
+        }
+
+
+        private void playerAnim2_Tick(object sender, EventArgs e)
+        {
+            btnHit.Enabled = false;
+            btnStand.Enabled = false;
+            btnDouble.Enabled = false;
+            int pos;
+            if (goingDownP2)
+                pos = playerAnimPic2.Top + 25;
+            else
+                pos = playerAnimPic2.Top - 25;
+            playerAnimPic2.Location = new Point(playerAnimPic2.Location.X, pos);
+            if (playerAnimPic2.Top == 947 || playerAnimPic2.Top == 447)
+            {
+                playerAnimStarted2 = false;
+                playerAnim2.Stop();
+                if (!playerAnimStarted1 && !playerAnimStarted2)
+                {
+                    btnHit.Enabled = true;
+                    btnStand.Enabled = true;
+                    btnDouble.Enabled = true;
+                }
             }
         }
     }
