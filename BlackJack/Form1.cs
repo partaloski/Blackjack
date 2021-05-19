@@ -522,25 +522,35 @@ namespace Prototyping_of_Project
         private void resizeTimer_Tick(object sender, EventArgs e)
         {
             int size = dealer2.Size.Height;
-            if (size <= 10 && !growing)
+            int height = dealer2.Location.Y;
+            if (size <= 5 && !growing)
             {
                 dealer2.Image = dealerCards[1].image;
-                size = 10;
+                size = 5;
                 growing = true;
             }
             if (size >= 214 && growing)
             {
                 size = 214;
+                height = 15;
                 dealer2.Size = new Size(dealer2.Size.Width, size);
+                dealer2.Location = new Point(dealer2.Location.X, height);
                 resizeTimer.Stop();
-                dealer2.Size = new Size(dealer2.Size.Width, 214);
                 return;
             }
-            if(!growing)
-                size-=25;
+            if (!growing)
+            {
+                height += 12;
+                size -= 25;
+            }
+
             else if (growing)
-                size+=25;
+            {
+                height -= 12;
+                size += 25;
+            }
             dealer2.Size = new Size(dealer2.Size.Width, size);
+            dealer2.Location = new Point(dealer2.Location.X, height);
         }
 
 

@@ -403,7 +403,7 @@ namespace Prototyping_of_Project
             // 
             // resizeTimer
             // 
-            this.resizeTimer.Interval = 1;
+            this.resizeTimer.Interval = 10;
             this.resizeTimer.Tick += new System.EventHandler(this.resizeTimer_Tick);
             // 
             // Form1
