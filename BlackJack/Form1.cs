@@ -179,28 +179,39 @@ namespace Prototyping_of_Project
             //Setting booleans and updating images and funds
         }
         //Double button function
-        private void btnDouble_Click(object sender, EventArgs e)
+        private async void btnDouble_Click(object sender, EventArgs e)
         {
             btnStand.Enabled = false;
             btnHit.Enabled = false;
-            if (funds >= bet){
+            if (funds >= bet)
+            {
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 funds -= bet;
                 bet *= 2;
                 hit(true);
                 game.getCards();
-
                 lblDealer.Text = game.currentDealer;
                 lblPlaye.Text = game.currentPlayer;
+                game.pdouble();
+                game.stand();
                 updateCards();
                 updateFunds();
+                while (game.checkForWin() == "continue")
+                {
+                    await Task.Delay(800);
+                    hit(false);
+                    updateCards();
+                    btnHit.Enabled = false;
+                    btnStand.Enabled = false;
+                }
                 end();
             }
             else{
                 MessageBox.Show("Cannot bet double since your funds are low.");
-            }
-            if(game.checkForWin() == "continue"){
                 btnStand.Enabled = true;
                 btnHit.Enabled = true;
+                btnDouble.Visible = false;
             }
         }
         //Stand button function
@@ -208,8 +219,8 @@ namespace Prototyping_of_Project
             btnStand.Enabled = false;
             btnHit.Enabled = false;
             btnDouble.Enabled = false;
-            bool firstDealer = true; ;
-            if (game.gameStarted == false)
+            bool firstDealer = true;
+            if (game.gameStarted == false || game.doubled())
                 return;
             game.stand();
             while (game.checkForWin() == "continue"){
@@ -225,7 +236,7 @@ namespace Prototyping_of_Project
 
         //Hit button function
         private  void btnHit_Click(object sender, EventArgs e){
-            if (game.gameStarted == false){
+            if (game.gameStarted == false || game.doubled()){
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 return;

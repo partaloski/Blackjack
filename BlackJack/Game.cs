@@ -13,6 +13,7 @@ namespace Prototyping_of_Project
         public string currentDealer { get; set; }
         private bool playerStood { get; set; }
         private bool playerHit { get; set; }
+        private bool playerDouble { get; set; }
 
         public bool gameStarted = false;
 
@@ -20,6 +21,7 @@ namespace Prototyping_of_Project
         public Game(){
             Deck deck = new Deck(2);
             this.deck = deck.cards;
+            this.playerDouble = false;
             this.playerCards = new List<Card>();
             this.dealerCards = new List<Card>();
             reset();
@@ -152,9 +154,21 @@ namespace Prototyping_of_Project
             this.dealerCards = new List<Card>();
             this.playerStood = false;
             this.playerHit = false;
+            this.playerDouble = false;
             currentDealer = "";
             currentPlayer = "";
             this.gameStarted = false;
+        }
+
+        public bool doubled()
+        {
+            return playerDouble;
+        }
+
+        public void pdouble()
+        {
+
+            playerDouble = true;
         }
     }
 }
