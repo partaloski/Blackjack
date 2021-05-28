@@ -196,6 +196,7 @@ namespace Prototyping_of_Project
             this.my5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.my5.TabIndex = 1;
             this.my5.TabStop = false;
+            this.my5.Click += new System.EventHandler(this.my5_Click);
             // 
             // btnStart
             // 
@@ -388,17 +389,17 @@ namespace Prototyping_of_Project
             // 
             // dealerAnim
             // 
-            this.dealerAnim.Interval = 1;
+            this.dealerAnim.Interval = 5;
             this.dealerAnim.Tick += new System.EventHandler(this.dealerAnim_Tick);
             // 
             // playerAnim
             // 
-            this.playerAnim.Interval = 1;
+            this.playerAnim.Interval = 5;
             this.playerAnim.Tick += new System.EventHandler(this.playerAnim_Tick);
             // 
             // playerAnim2
             // 
-            this.playerAnim2.Interval = 1;
+            this.playerAnim2.Interval = 5;
             this.playerAnim2.Tick += new System.EventHandler(this.playerAnim2_Tick);
             // 
             // resizeTimer
@@ -412,7 +413,7 @@ namespace Prototyping_of_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1275, 689);
+            this.ClientSize = new System.Drawing.Size(1270, 689);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.my4);
             this.Controls.Add(this.my3);
@@ -438,8 +439,8 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.my1);
             this.Controls.Add(this.dealer1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1780, 960);
             this.Name = "Form1";
             this.Text = "Blackjack";
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).EndInit();

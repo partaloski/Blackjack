@@ -31,6 +31,11 @@ namespace Prototyping_of_Project
         private Game game;
         private long funds;
         public long bet;
+        private int heightShouldBe;
+        private int offsetDealer;
+        private int offsetPlayer;
+        private int playerOff;
+        private int dealerOff;
         //Constructor
         public Form1(){
             InitializeComponent();
@@ -82,6 +87,12 @@ namespace Prototyping_of_Project
             dealerAnimStarted = false;
             goingDownP1 = false;
             goingDownP2 = false;
+
+            playerOff = this.Size.Height + 50 + my1.Size.Height;
+            dealerOff = 0 - 50 - dealer1.Size.Height;
+            heightShouldBe = dealer1.Size.Height;
+            offsetDealer = dealer1.Location.Y;
+            offsetPlayer = my1.Location.Y;
         }
 
         //First, you need to deposit money to play.
@@ -410,7 +421,7 @@ namespace Prototyping_of_Project
         }
 
         private void animatePlayerCardOne(){
-            if (playerAnimPic1.Top == 447)
+            if (playerAnimPic1.Top == offsetPlayer)
                 goingDownP1 = true;
             else
                 goingDownP1 = false;
@@ -418,7 +429,7 @@ namespace Prototyping_of_Project
         }
 
         private void animatePlayerCardTwo(){
-            if (playerAnimPic2.Top == 447)
+            if (playerAnimPic2.Top == offsetPlayer)
                 goingDownP2 = true;
             else
                 goingDownP2 = false;
@@ -428,7 +439,7 @@ namespace Prototyping_of_Project
         private void animateDealerCard()
         {
             //15
-            if (dealerAnimPic.Top == 15)
+            if (dealerAnimPic.Top == offsetDealer)
                 goingDownD = true;
             else
                 goingDownD = false;
@@ -445,8 +456,12 @@ namespace Prototyping_of_Project
                 pos = playerAnimPic1.Top + 25;
             else
                 pos = playerAnimPic1.Top - 25;
+            if (pos > playerOff)
+                pos = playerOff;
+            else if (pos < offsetPlayer)
+                pos = offsetPlayer;
             playerAnimPic1.Location = new Point(playerAnimPic1.Location.X, pos);
-            if (playerAnimPic1.Top == 947 || playerAnimPic1.Top == 447)
+            if (playerAnimPic1.Top == playerOff || playerAnimPic1.Top == offsetPlayer)
             {
                 playerAnimStarted1 = false;
                 playerAnim.Stop();
@@ -467,8 +482,12 @@ namespace Prototyping_of_Project
                 pos = dealerAnimPic.Top - 25;
             else
                 pos = dealerAnimPic.Top + 25;
+            if (pos < dealerOff)
+                pos = dealerOff;
+            else if (pos > offsetDealer)
+                pos = offsetDealer;
             dealerAnimPic.Location = new Point(dealerAnimPic.Location.X, pos);
-            if (dealerAnimPic.Top == 15 || dealerAnimPic.Top == -485)
+            if (dealerAnimPic.Top == offsetDealer || dealerAnimPic.Top == dealerOff)
             {
                 dealerAnimStarted = false;
                 dealerAnim.Stop();
@@ -486,8 +505,12 @@ namespace Prototyping_of_Project
                 pos = playerAnimPic2.Top + 25;
             else
                 pos = playerAnimPic2.Top - 25;
+            if (pos > playerOff)
+                pos = playerOff;
+            else if (pos < offsetPlayer)
+                pos = offsetPlayer;
             playerAnimPic2.Location = new Point(playerAnimPic2.Location.X, pos);
-            if (playerAnimPic2.Top == 947 || playerAnimPic2.Top == 447)
+            if (playerAnimPic2.Top == playerOff || playerAnimPic2.Top == offsetPlayer)
             {
                 playerAnimStarted2 = false;
                 playerAnim2.Stop();
@@ -513,6 +536,20 @@ namespace Prototyping_of_Project
         }
         private void ResizeAll(Control control, Size newSize)
         {
+            /*
+             * 
+             * 
+            Size size = this.Size;
+            int h = size.Height;
+            int w = size.Width;
+            double ratioS = 1.8479;
+            double ratioI = Convert.ToDouble(w) / Convert.ToDouble(h);
+            if(ratioI != ratioS)
+            {
+                h = Convert.ToInt32(ratioS * Convert.ToDouble(w));
+            }
+            this.Size = new Size(w, h);
+             */
             int width = newSize.Width - oldSize.Width;
             control.Left += (control.Left * width) / oldSize.Width;
             control.Width += (control.Width * width) / oldSize.Width;
@@ -520,6 +557,14 @@ namespace Prototyping_of_Project
             int height = newSize.Height - oldSize.Height;
             control.Top += (control.Top * height) / oldSize.Height;
             control.Height += (control.Height * height) / oldSize.Height;
+
+
+
+            playerOff = this.Size.Height + 50 + my1.Size.Height;
+            dealerOff = 0 - 50 - dealer1.Size.Height;
+            heightShouldBe = dealer1.Size.Height;
+            offsetDealer = dealer1.Location.Y;
+            offsetPlayer = my1.Location.Y;
         }
 
         private bool growing;
@@ -534,16 +579,16 @@ namespace Prototyping_of_Project
         {
             int size = dealer2.Size.Height;
             int height = dealer2.Location.Y;
-            if (size <= 5 && !growing)
+            if (size <= heightShouldBe/2 && !growing)
             {
                 dealer2.Image = dealerCards[1].image;
-                size = 5;
+                size = heightShouldBe/2;
                 growing = true;
             }
-            if (size >= 214 && growing)
+            if (size >= heightShouldBe && growing)
             {
-                size = 214;
-                height = 15;
+                size = heightShouldBe;
+                height = offsetDealer;
                 dealer2.Size = new Size(dealer2.Size.Width, size);
                 dealer2.Location = new Point(dealer2.Location.X, height);
                 resizeTimer.Stop();
@@ -592,7 +637,7 @@ namespace Prototyping_of_Project
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
                 }
-                playerPic[index].Location = new Point(playerPic[index].Location.X, 947);
+                playerPic[index].Location = new Point(playerPic[index].Location.X, playerOff);
                 playerPic[index].Image = c.image;
                 PictureBox playerAnimPicAnon = playerPic[index];
                 if (!playerAnimStarted1)
@@ -634,7 +679,7 @@ namespace Prototyping_of_Project
                 }
                 if (!firstDealer)
                 {
-                    dealerPic[index].Location = new Point(dealerPic[index].Location.X, -485);
+                    dealerPic[index].Location = new Point(dealerPic[index].Location.X, dealerOff);
                     dealerPic[index].Image = c.image;
                 }
                 game.getCards();
@@ -660,6 +705,11 @@ namespace Prototyping_of_Project
                 btnStand.Enabled = false;
             }
             updateCards();
+        }
+
+        private void my5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
