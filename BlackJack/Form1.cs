@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJack;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,19 @@ using System.Windows.Forms;
 
 namespace Prototyping_of_Project
 {
-    public partial class Form1 : Form {
+
+
+    public partial class Form1 : Form
+    {
+
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
         //All variables
         private bool dealerAnimStarted;
         private bool playerAnimStarted1;
         private bool playerAnimStarted2;
+        private bool anybuttonClicked;
         private bool goingUp;
         private bool goingDownP1;
         private bool goingDownP2;
@@ -37,8 +46,13 @@ namespace Prototyping_of_Project
         private int playerOff;
         private int dealerOff;
         //Constructor
-        public Form1(){
+        public Form1()
+        {
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            anybuttonClicked = false;
             InitializeComponent();
+            Controls controls = new Controls();
+            controls.ShowDialog();
             funds = 0;
             bet = 0;
             game = new Game();
@@ -57,7 +71,8 @@ namespace Prototyping_of_Project
             playerPic.Add(my4);
             playerPic.Add(my5);
             //Player's pictures added
-            for (int i = 0; i < 6; i++){
+            for (int i = 0; i < 6; i++)
+            {
                 usedDealer[i] = false;
                 usedPlayer[i] = false;
             }
@@ -96,15 +111,18 @@ namespace Prototyping_of_Project
         }
 
         //First, you need to deposit money to play.
-        private void btnDeposit_Click(object sender, EventArgs e) {
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
             Deposit form = new Deposit();
             form.ShowDialog();
-            if (form.DialogResult == DialogResult.Yes) {
+            if (form.DialogResult == DialogResult.Yes)
+            {
                 funds += form.credits;
                 updateFunds();
                 btnStart.Enabled = true;
                 btnJustStart.Enabled = true;
             }
+            resetFocus();
         }
 
         //Then we can start the game using an amount of credits.
@@ -112,7 +130,8 @@ namespace Prototyping_of_Project
         {
             StartGame form = new StartGame(funds);
             form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK){
+            if (form.DialogResult == DialogResult.OK)
+            {
                 start();
                 bet = form.value;
                 funds -= bet;
@@ -120,7 +139,7 @@ namespace Prototyping_of_Project
                 hit(true);
                 hit(false);
                 hit(true);
-                btnDouble.Visible = true;
+                btnDouble.Visible = btnHit.Visible;
                 dealer2.Image = Image.FromFile("./PNG/back.png");
                 game.getCards();
                 lblDealer.Text = game.currentDealer;
@@ -129,15 +148,21 @@ namespace Prototyping_of_Project
                 end();
                 updateFunds();
             }
+            resetFocus();
         }
 
 
         //A function for the just start button
         private void btnJustStart_Click(object sender, EventArgs e)
         {
-            if (StartGame.lastBet > funds){
+            if (funds == 0)
+            {
                 MessageBox.Show("You do not have funds to start the game.");
+                resetFocus();
                 return;
+            }
+            else if (StartGame.lastBet > funds){
+                StartGame.lastBet = funds;
             }
             start();
             bet = StartGame.lastBet;
@@ -146,7 +171,7 @@ namespace Prototyping_of_Project
             hit(true);
             hit(false);
             hit(true);
-            btnDouble.Visible = true;
+            btnDouble.Visible = btnHit.Visible;
             dealer2.Image = Image.FromFile("./PNG/back.png");
             game.getCards();
             lblDealer.Text = game.currentDealer;
@@ -154,10 +179,13 @@ namespace Prototyping_of_Project
             updateCards();
             end();
             updateFunds();
+            resetFocus();
         }
         //We wrote a specific function so that the code can be reused.
-        private void start(){
+        private void start()
+        {
             btnHit.Enabled = true;
+            btnDouble.Visible = btnHit.Visible;
             btnDouble.Enabled = true;
             btnStand.Enabled = true;
             btnStart.Enabled = false;
@@ -183,7 +211,8 @@ namespace Prototyping_of_Project
             //Set cards and pictures of cards for the player
             updateFunds();
             clearCards();
-            for (int i = 0; i < 6; i++){
+            for (int i = 0; i < 6; i++)
+            {
                 usedDealer[i] = false;
                 usedPlayer[i] = false;
             }
@@ -192,6 +221,8 @@ namespace Prototyping_of_Project
         //Double button function
         private async void btnDouble_Click(object sender, EventArgs e)
         {
+            if (anybuttonClicked) return;
+            anybuttonClicked = true;
             btnStand.Enabled = false;
             btnHit.Enabled = false;
             if (funds >= bet)
@@ -218,15 +249,21 @@ namespace Prototyping_of_Project
                 }
                 end();
             }
-            else{
+            else
+            {
                 MessageBox.Show("Cannot bet double since your funds are low.");
                 btnStand.Enabled = true;
                 btnHit.Enabled = true;
                 btnDouble.Visible = false;
             }
+            resetFocus();
+            anybuttonClicked = false;
         }
         //Stand button function
-        private async void btnStand_Click(object sender, EventArgs e){
+        private async void btnStand_Click(object sender, EventArgs e)
+        {
+            if (anybuttonClicked) return;
+            anybuttonClicked = true;
             btnStand.Enabled = false;
             btnHit.Enabled = false;
             btnDouble.Enabled = false;
@@ -234,7 +271,8 @@ namespace Prototyping_of_Project
             if (game.gameStarted == false || game.doubled())
                 return;
             game.stand();
-            while (game.checkForWin() == "continue"){
+            while (game.checkForWin() == "continue")
+            {
                 await Task.Delay(800);
                 if (firstDealer)
                 {
@@ -243,25 +281,37 @@ namespace Prototyping_of_Project
                 updateCards();
             }
             end();
+            resetFocus();
+            anybuttonClicked = false;
         }
 
         //Hit button function
-        private  void btnHit_Click(object sender, EventArgs e){
-            if (game.gameStarted == false || game.doubled()){
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            if (anybuttonClicked) return;
+            anybuttonClicked = true;
+            if (game.gameStarted == false || game.doubled())
+            {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                anybuttonClicked = false;
                 return;
             }
             hit(true);
             updateCards();
             end();
+            resetFocus();
+            anybuttonClicked = false;
         }
 
         //A function to update the images of the cards
         //A simple function that makes the code reusable
-        private void updateCards(){
-            for (int i = 0; i < 6 && i < dealerCards.Count; i++){
-                if (!usedDealer[i]){
+        private void updateCards()
+        {
+            for (int i = 0; i < 6 && i < dealerCards.Count; i++)
+            {
+                if (!usedDealer[i])
+                {
                     if (i != 1)
                     {
                         dealerPic[i].Image = dealerCards[i].image;
@@ -270,8 +320,10 @@ namespace Prototyping_of_Project
                 }
             }
 
-            for (int i = 0; i < 6 && i < playerCards.Count; i++){
-                if (!usedPlayer[i]){
+            for (int i = 0; i < 6 && i < playerCards.Count; i++)
+            {
+                if (!usedPlayer[i])
+                {
                     playerPic[i].Image = playerCards[i].image;
                     usedPlayer[i] = true;
                 }
@@ -284,24 +336,29 @@ namespace Prototyping_of_Project
         //A function to set the images to the default placeholder
         private void clearCards()
         {
-            foreach (PictureBox picture in playerPic){
+            foreach (PictureBox picture in playerPic)
+            {
                 picture.Image = Image.FromFile("./PNG/empty.png");
             }
-            foreach (PictureBox picture in dealerPic){
+            foreach (PictureBox picture in dealerPic)
+            {
                 picture.Image = Image.FromFile("./PNG/empty.png");
             }
         }
 
         //A quick function to update the funds label of the form
-        private void updateFunds(){
+        private void updateFunds()
+        {
             long tmp = funds;
             List<long> ints = new List<long>();
-            while (tmp > 0){
+            while (tmp > 0)
+            {
                 ints.Add(tmp % 1000);
                 tmp /= 1000;
             }
             string xx = "";
-            for(int i=ints.Count-1; i>=0; i--){
+            for (int i = ints.Count - 1; i >= 0; i--)
+            {
                 if (i == ints.Count - 1)
                     xx += ints[i].ToString();
                 else
@@ -317,10 +374,12 @@ namespace Prototyping_of_Project
 
         //A function that checks for an end and if one is seen 
         //The game is being resetted while you are told that you lost/won and how much, etc etc.
-        private async void end(){
+        private async void end()
+        {
             string outx = game.checkForWin();
             updateCards();
-            if (outx == "blackjack"){ 
+            if (outx == "blackjack")
+            {
                 long x = Convert.ToInt64(Convert.ToDouble(bet) * 2.5);
                 funds += x;
                 btnHit.Enabled = false;
@@ -328,27 +387,31 @@ namespace Prototyping_of_Project
                 await Task.Delay(400);
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "player"){
+            else if (outx == "player")
+            {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet * 2;
                 await Task.Delay(400);
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
-            else if (outx == "dealerBlackjack"){
+            else if (outx == "dealerBlackjack")
+            {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 await Task.Delay(400);
                 MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
             }
-            else if (outx == "push"){
+            else if (outx == "push")
+            {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 funds += bet;
                 await Task.Delay(400);
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
             }
-            else if(outx == "dealer"){
+            else if (outx == "dealer")
+            {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
                 await Task.Delay(400);
@@ -371,56 +434,69 @@ namespace Prototyping_of_Project
             btnHit.Enabled = false;
         }
 
-        private void btnWithdraw_Click(object sender, EventArgs e){
-            if (funds == 0){
+        private void btnWithdraw_Click(object sender, EventArgs e)
+        {
+            if (funds == 0)
+            {
                 MessageBox.Show("You cannot refund since you do not have enough chips.");
+                resetFocus();
                 return;
             }
             Withdraw withdraw = new Withdraw(funds);
-            
+
             withdraw.ShowDialog();
-            if (withdraw.DialogResult == DialogResult.Yes){
+            if (withdraw.DialogResult == DialogResult.Yes)
+            {
                 funds -= withdraw.withdraw_amount;
                 updateFunds();
             }
+            resetFocus();
         }
 
         //A simple event caller function that toggles the showcasing of the player's balance and clearing up the game a little
-        private void button1_Click(object sender, EventArgs e){
+        private void button1_Click(object sender, EventArgs e)
+        {
             button1.Enabled = false;
-            int shouldBeL = 9;
-            int shouldBe = 40;
+            int shouldBeL = 39;
+            int shouldBe = 70;
             goingUp = (shouldBeL <= label1.Top && shouldBe <= lblFunds.Top);
             timerAnim.Interval = 3;
             timerAnim.Start();
+            resetFocus();
         }
 
-        private void timerAnim_Tick(object sender, EventArgs e){
-            if (this.goingUp && label1.Location.Y > -90 && lblFunds.Location.Y > -90){
+        private void timerAnim_Tick(object sender, EventArgs e)
+        {
+            if (this.goingUp && label1.Location.Y > -90 && lblFunds.Location.Y > -90)
+            {
                 int labelp = label1.Location.Y - 10;
                 int fundsp = lblFunds.Location.Y - 10;
                 label1.Location = new Point(label1.Location.X, labelp);
                 lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
                 return;
             }
-            else if (this.goingUp){
+            else if (this.goingUp)
+            {
                 timerAnim.Stop();
                 button1.Enabled = true;
             }
-            if(!this.goingUp && label1.Location.Y <= 9 && lblFunds.Location.Y <= 40){
+            if (!this.goingUp && label1.Location.Y <= 39 && lblFunds.Location.Y <= 70)
+            {
                 int labelp = label1.Location.Y + 10;
                 int fundsp = lblFunds.Location.Y + 10;
                 label1.Location = new Point(label1.Location.X, labelp);
                 lblFunds.Location = new Point(lblFunds.Location.X, fundsp);
                 return;
             }
-            else if (!this.goingUp){
+            else if (!this.goingUp)
+            {
                 timerAnim.Stop();
                 button1.Enabled = true;
             }
         }
 
-        private void animatePlayerCardOne(){
+        private void animatePlayerCardOne()
+        {
             if (playerAnimPic1.Top == offsetPlayer)
                 goingDownP1 = true;
             else
@@ -428,7 +504,8 @@ namespace Prototyping_of_Project
             playerAnim.Start();
         }
 
-        private void animatePlayerCardTwo(){
+        private void animatePlayerCardTwo()
+        {
             if (playerAnimPic2.Top == offsetPlayer)
                 goingDownP2 = true;
             else
@@ -579,10 +656,10 @@ namespace Prototyping_of_Project
         {
             int size = dealer2.Size.Height;
             int height = dealer2.Location.Y;
-            if (size <= heightShouldBe/2 && !growing)
+            if (size <= heightShouldBe / 2 && !growing)
             {
                 dealer2.Image = dealerCards[1].image;
-                size = heightShouldBe/2;
+                size = heightShouldBe / 2;
                 growing = true;
             }
             if (size >= heightShouldBe && growing)
@@ -710,6 +787,108 @@ namespace Prototyping_of_Project
         private void my5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void controlsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Space == stand
+            //Enter == hit
+            //Tab == double
+            //Ctrl+N == Start
+            //Ctrl+Shift+N == Set and Start
+            //Ctrl+D == Deposit
+            //Ctrl+W == Withdraw
+            Controls controls = new Controls();
+            controls.ShowDialog();
+        }
+
+        private void hideAllButtonsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1.Visible = !button1.Visible;
+            btnDeposit.Visible = !btnDeposit.Visible;
+            btnWithdraw.Visible = !btnWithdraw.Visible;
+            btnStart.Visible = !btnStart.Visible;
+            btnJustStart.Visible = !btnJustStart.Visible;
+        }
+
+        private void toggleFundsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (button1.Enabled)
+                button1_Click(sender, e);
+        }
+
+        private void depositFundsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnDeposit.Enabled)
+                btnDeposit_Click(sender, e);
+        }
+
+        private void withdrawFundsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnWithdraw.Enabled)
+                btnWithdraw_Click(sender, e);
+        }
+
+        private void startGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnJustStart.Enabled)
+                btnJustStart_Click(sender, e);
+        }
+
+        private void changeBetAndStartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btnStart.Enabled)
+                btnStart_Click(sender, e);
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            string pressedKey = e.KeyCode.ToString();
+            if (pressedKey.ToLower() == "s")
+            {
+                //Stand
+                if (btnStand.Enabled && btnStand.Visible) btnStand_Click(sender, e);
+            }
+            else if (pressedKey.ToLower() == "a")
+            {
+                //Hit
+                if (btnHit.Enabled && btnHit.Visible) btnHit_Click(sender, e);
+            }
+            else if (pressedKey.ToLower() == "d")
+            {
+                //Double
+                if (btnDouble.Enabled && btnDouble.Visible) btnDouble_Click(sender, e);
+            }
+        }
+
+        private void dshToggle_Click(object sender, EventArgs e)
+        {
+            btnStand.Visible = !btnStand.Visible;
+            btnHit.Visible = !btnHit.Visible;
+            btnDouble.Visible = !btnDouble.Visible;
+        }
+
+        private async void resetFocus()
+        {
+            reverseEnabled();
+            await Task.Delay(20);
+            reverseEnabled();
+        }
+
+        private void reverseEnabled()
+        {
+            btnHit.Enabled = !btnHit.Enabled;
+            btnStand.Enabled = !btnStand.Enabled;
+            btnDouble.Enabled = !btnDouble.Enabled;
+            btnDeposit.Enabled = !btnDeposit.Enabled;
+            btnWithdraw.Enabled = !btnWithdraw.Enabled;
+            button1.Enabled = !button1.Enabled;
+            btnStart.Enabled = !btnStart.Enabled;
+            btnJustStart.Enabled = !btnJustStart.Enabled;
         }
     }
 }

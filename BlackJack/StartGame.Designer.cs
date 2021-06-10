@@ -48,6 +48,7 @@ namespace Prototyping_of_Project
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 50);
             this.button1.TabIndex = 0;
+            this.button1.TabStop = false;
             this.button1.Text = "Bet";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -59,6 +60,7 @@ namespace Prototyping_of_Project
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(206, 50);
             this.button2.TabIndex = 0;
+            this.button2.TabStop = false;
             this.button2.Text = "Cancel Bet";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -86,6 +88,7 @@ namespace Prototyping_of_Project
             0,
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericUpDown1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyDown);
             // 
             // label1
             // 
@@ -119,6 +122,7 @@ namespace Prototyping_of_Project
             this.btnHalf.Name = "btnHalf";
             this.btnHalf.Size = new System.Drawing.Size(187, 35);
             this.btnHalf.TabIndex = 0;
+            this.btnHalf.TabStop = false;
             this.btnHalf.Text = "1/2 Bet";
             this.btnHalf.UseVisualStyleBackColor = true;
             this.btnHalf.Click += new System.EventHandler(this.f);
@@ -131,6 +135,7 @@ namespace Prototyping_of_Project
             this.btnQuarter.Name = "btnQuarter";
             this.btnQuarter.Size = new System.Drawing.Size(187, 35);
             this.btnQuarter.TabIndex = 0;
+            this.btnQuarter.TabStop = false;
             this.btnQuarter.Text = "1/4 Bet";
             this.btnQuarter.UseVisualStyleBackColor = true;
             this.btnQuarter.Click += new System.EventHandler(this.btnQuarter_Click);
@@ -143,6 +148,7 @@ namespace Prototyping_of_Project
             this.btnMax.Name = "btnMax";
             this.btnMax.Size = new System.Drawing.Size(187, 35);
             this.btnMax.TabIndex = 0;
+            this.btnMax.TabStop = false;
             this.btnMax.Text = "Max Bet";
             this.btnMax.UseVisualStyleBackColor = true;
             this.btnMax.Click += new System.EventHandler(this.btnMax_Click);

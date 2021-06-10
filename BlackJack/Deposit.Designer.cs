@@ -48,6 +48,7 @@ namespace Prototyping_of_Project
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(240, 45);
             this.button1.TabIndex = 0;
+            this.button1.TabStop = false;
             this.button1.Text = "Deposit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -60,6 +61,7 @@ namespace Prototyping_of_Project
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(240, 45);
             this.button2.TabIndex = 0;
+            this.button2.TabStop = false;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -103,6 +105,7 @@ namespace Prototyping_of_Project
             0,
             0,
             0});
+            this.numericUpDown1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyDown);
             // 
             // label2
             // 
@@ -147,6 +150,9 @@ namespace Prototyping_of_Project
             this.Name = "Deposit";
             this.ShowIcon = false;
             this.Text = "Deposit";
+            this.Load += new System.EventHandler(this.Deposit_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Deposit_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Deposit_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

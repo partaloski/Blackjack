@@ -36,3 +36,4 @@ C:\Users\parta\source\repos\BlackJack\BlackJack\obj\Debug\netcoreapp3.1\BlackJac
 C:\Users\parta\source\repos\BlackJack\BlackJack\obj\Debug\netcoreapp3.1\BlackJack.genruntimeconfig.cache
 C:\Users\parta\source\repos\BlackJack\BlackJack\obj\Debug\netcoreapp3.1\BlackJack.Properties.Resources.resources
 C:\Users\parta\source\repos\BlackJack\BlackJack\obj\Debug\netcoreapp3.1\BlackJack.csproj.AssemblyReference.cache
+C:\Users\parta\source\repos\BlackJack\BlackJack\obj\Debug\netcoreapp3.1\BlackJack.Controls.resources

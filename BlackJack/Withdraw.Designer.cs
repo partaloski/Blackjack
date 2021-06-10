@@ -103,6 +103,7 @@ namespace Prototyping_of_Project
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 53);
             this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.Text = "Confirm";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -114,6 +115,7 @@ namespace Prototyping_of_Project
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(162, 53);
             this.button2.TabIndex = 1;
+            this.button2.TabStop = false;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -125,6 +127,7 @@ namespace Prototyping_of_Project
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(531, 39);
             this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyDown);
             // 
             // button3
             // 
@@ -134,6 +137,7 @@ namespace Prototyping_of_Project
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(172, 45);
             this.button3.TabIndex = 3;
+            this.button3.TabStop = false;
             this.button3.Text = "1/4";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -146,6 +150,7 @@ namespace Prototyping_of_Project
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(178, 45);
             this.button4.TabIndex = 3;
+            this.button4.TabStop = false;
             this.button4.Text = "1/2";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -158,6 +163,7 @@ namespace Prototyping_of_Project
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(172, 45);
             this.button5.TabIndex = 3;
+            this.button5.TabStop = false;
             this.button5.Text = "Max";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);

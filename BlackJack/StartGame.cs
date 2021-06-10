@@ -101,5 +101,15 @@ namespace Prototyping_of_Project
             }
             numericUpDown1.Value = Convert.ToDecimal(value);
         }
+
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            lastBet = Convert.ToInt64(numericUpDown1.Value);
+            value = Convert.ToInt64(numericUpDown1.Value);
+            if (e.KeyCode == Keys.Enter)
+                this.DialogResult = DialogResult.OK;
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

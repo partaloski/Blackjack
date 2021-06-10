@@ -67,5 +67,18 @@ namespace Prototyping_of_Project
         {// 1/4
             numericUpDown1.Value = Convert.ToInt64(withdraw_amount_max * 0.25);
         }
+
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                withdraw_amount = Convert.ToInt64(numericUpDown1.Value);
+                DialogResult = DialogResult.Yes;
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                DialogResult = DialogResult.No;
+            }
+        }
     }
 }

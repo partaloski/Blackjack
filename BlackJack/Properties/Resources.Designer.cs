@@ -113,6 +113,16 @@ namespace BlackJack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bckg {
+            get {
+                object obj = ResourceManager.GetObject("bckg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap casino_wallpaper_13 {
             get {
                 object obj = ResourceManager.GetObject("casino-wallpaper-13", resourceCulture);
@@ -133,6 +143,16 @@ namespace BlackJack.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap controls {
+            get {
+                object obj = ResourceManager.GetObject("controls", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap empty {
             get {
                 object obj = ResourceManager.GetObject("empty", resourceCulture);
@@ -146,6 +166,16 @@ namespace BlackJack.Properties {
         internal static System.Drawing.Bitmap preset {
             get {
                 object obj = ResourceManager.GetObject("preset", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap preset_reserve {
+            get {
+                object obj = ResourceManager.GetObject("preset-reserve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

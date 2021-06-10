@@ -121,6 +121,9 @@
   <data name="your_money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\netcoreapp3.1\PNG\your_money.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="backFunds2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\backFunds2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="back_count" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\netcoreapp3.1\PNG\back_count.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,8 +136,14 @@
   <data name="preset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\netcoreapp3.1\PNG\preset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backFunds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\netcoreapp3.1\PNG\backFunds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="preset-reserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\preset-reserve.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="controls" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\controls.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="casino-wallpaper-13" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\netcoreapp3.1\PNG\casino-wallpaper-13.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,10 +151,10 @@
   <data name="chip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\netcoreapp3.1\PNG\chip.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\netcoreapp3.1\PNG\empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backFunds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\backFunds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backFunds2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\netcoreapp3.1\PNG\backFunds2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bckg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\netcoreapp3.1\PNG\bckg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

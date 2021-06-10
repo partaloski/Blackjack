@@ -26,5 +26,33 @@ namespace Prototyping_of_Project
         {
             DialogResult = DialogResult.No;
         }
+
+        private void Deposit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Deposit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void Deposit_KeyDown(object sender, KeyEventArgs e)
+        {
+            credits = Convert.ToInt32(numericUpDown1.Value);
+            if (e.KeyCode == Keys.Enter)
+                DialogResult = DialogResult.Yes;
+            if (e.KeyCode == Keys.Escape)
+                DialogResult = DialogResult.No;
+        }
+
+        private void numericUpDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            credits = Convert.ToInt32(numericUpDown1.Value);
+            if (e.KeyCode == Keys.Enter)
+                this.DialogResult = DialogResult.Yes;
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.No;
+        }
     }
 }

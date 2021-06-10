@@ -62,6 +62,21 @@ namespace Prototyping_of_Project
             this.playerAnim = new System.Windows.Forms.Timer(this.components);
             this.playerAnim2 = new System.Windows.Forms.Timer(this.components);
             this.resizeTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeBetAndStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depositFundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withdrawFundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toggleFundsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.hideAllButtonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.dshToggle = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).BeginInit();
@@ -74,6 +89,7 @@ namespace Prototyping_of_Project
             ((System.ComponentModel.ISupportInitialize)(this.my5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.my6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer6)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dealer1
@@ -82,7 +98,7 @@ namespace Prototyping_of_Project
             this.dealer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dealer1.ErrorImage = null;
             this.dealer1.InitialImage = null;
-            this.dealer1.Location = new System.Drawing.Point(13, 15);
+            this.dealer1.Location = new System.Drawing.Point(13, 52);
             this.dealer1.Name = "dealer1";
             this.dealer1.Size = new System.Drawing.Size(140, 214);
             this.dealer1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,7 +110,7 @@ namespace Prototyping_of_Project
             this.dealer2.BackColor = System.Drawing.Color.Transparent;
             this.dealer2.ErrorImage = null;
             this.dealer2.InitialImage = null;
-            this.dealer2.Location = new System.Drawing.Point(159, 15);
+            this.dealer2.Location = new System.Drawing.Point(159, 52);
             this.dealer2.Name = "dealer2";
             this.dealer2.Size = new System.Drawing.Size(140, 214);
             this.dealer2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -106,7 +122,7 @@ namespace Prototyping_of_Project
             this.dealer3.BackColor = System.Drawing.Color.Transparent;
             this.dealer3.ErrorImage = null;
             this.dealer3.InitialImage = null;
-            this.dealer3.Location = new System.Drawing.Point(305, 15);
+            this.dealer3.Location = new System.Drawing.Point(305, 52);
             this.dealer3.Name = "dealer3";
             this.dealer3.Size = new System.Drawing.Size(140, 214);
             this.dealer3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -118,7 +134,7 @@ namespace Prototyping_of_Project
             this.dealer4.BackColor = System.Drawing.Color.Transparent;
             this.dealer4.ErrorImage = null;
             this.dealer4.InitialImage = null;
-            this.dealer4.Location = new System.Drawing.Point(451, 15);
+            this.dealer4.Location = new System.Drawing.Point(451, 52);
             this.dealer4.Name = "dealer4";
             this.dealer4.Size = new System.Drawing.Size(140, 214);
             this.dealer4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -130,7 +146,7 @@ namespace Prototyping_of_Project
             this.dealer5.BackColor = System.Drawing.Color.Transparent;
             this.dealer5.ErrorImage = null;
             this.dealer5.InitialImage = null;
-            this.dealer5.Location = new System.Drawing.Point(597, 15);
+            this.dealer5.Location = new System.Drawing.Point(597, 52);
             this.dealer5.Name = "dealer5";
             this.dealer5.Size = new System.Drawing.Size(140, 214);
             this.dealer5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -142,7 +158,7 @@ namespace Prototyping_of_Project
             this.my1.BackColor = System.Drawing.Color.Transparent;
             this.my1.ErrorImage = null;
             this.my1.InitialImage = null;
-            this.my1.Location = new System.Drawing.Point(1110, 447);
+            this.my1.Location = new System.Drawing.Point(1110, 484);
             this.my1.Name = "my1";
             this.my1.Size = new System.Drawing.Size(140, 214);
             this.my1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -154,7 +170,7 @@ namespace Prototyping_of_Project
             this.my2.BackColor = System.Drawing.Color.Transparent;
             this.my2.ErrorImage = null;
             this.my2.InitialImage = null;
-            this.my2.Location = new System.Drawing.Point(964, 447);
+            this.my2.Location = new System.Drawing.Point(964, 484);
             this.my2.Name = "my2";
             this.my2.Size = new System.Drawing.Size(140, 214);
             this.my2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -166,7 +182,7 @@ namespace Prototyping_of_Project
             this.my3.BackColor = System.Drawing.Color.Transparent;
             this.my3.ErrorImage = null;
             this.my3.InitialImage = null;
-            this.my3.Location = new System.Drawing.Point(818, 447);
+            this.my3.Location = new System.Drawing.Point(818, 484);
             this.my3.Name = "my3";
             this.my3.Size = new System.Drawing.Size(140, 214);
             this.my3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -178,7 +194,7 @@ namespace Prototyping_of_Project
             this.my4.BackColor = System.Drawing.Color.Transparent;
             this.my4.ErrorImage = null;
             this.my4.InitialImage = null;
-            this.my4.Location = new System.Drawing.Point(672, 447);
+            this.my4.Location = new System.Drawing.Point(672, 484);
             this.my4.Name = "my4";
             this.my4.Size = new System.Drawing.Size(140, 214);
             this.my4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -190,7 +206,7 @@ namespace Prototyping_of_Project
             this.my5.BackColor = System.Drawing.Color.Transparent;
             this.my5.ErrorImage = null;
             this.my5.InitialImage = null;
-            this.my5.Location = new System.Drawing.Point(526, 447);
+            this.my5.Location = new System.Drawing.Point(526, 484);
             this.my5.Name = "my5";
             this.my5.Size = new System.Drawing.Size(140, 214);
             this.my5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,10 +219,11 @@ namespace Prototyping_of_Project
             this.btnStart.Enabled = false;
             this.btnStart.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStart.ForeColor = System.Drawing.Color.Green;
-            this.btnStart.Location = new System.Drawing.Point(12, 253);
+            this.btnStart.Location = new System.Drawing.Point(12, 290);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(216, 80);
             this.btnStart.TabIndex = 2;
+            this.btnStart.TabStop = false;
             this.btnStart.Text = "Set Bet, Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
@@ -215,10 +232,11 @@ namespace Prototyping_of_Project
             // 
             this.btnDeposit.Font = new System.Drawing.Font("Bowlby One SC", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeposit.ForeColor = System.Drawing.Color.Green;
-            this.btnDeposit.Location = new System.Drawing.Point(1027, 245);
+            this.btnDeposit.Location = new System.Drawing.Point(1027, 282);
             this.btnDeposit.Name = "btnDeposit";
             this.btnDeposit.Size = new System.Drawing.Size(236, 88);
             this.btnDeposit.TabIndex = 2;
+            this.btnDeposit.TabStop = false;
             this.btnDeposit.Text = "Deposit Credits";
             this.btnDeposit.UseVisualStyleBackColor = true;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
@@ -228,10 +246,11 @@ namespace Prototyping_of_Project
             this.btnStand.Enabled = false;
             this.btnStand.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStand.ForeColor = System.Drawing.Color.Green;
-            this.btnStand.Location = new System.Drawing.Point(12, 535);
+            this.btnStand.Location = new System.Drawing.Point(12, 572);
             this.btnStand.Name = "btnStand";
             this.btnStand.Size = new System.Drawing.Size(331, 60);
             this.btnStand.TabIndex = 2;
+            this.btnStand.TabStop = false;
             this.btnStand.Text = "Stand";
             this.btnStand.UseVisualStyleBackColor = true;
             this.btnStand.Click += new System.EventHandler(this.btnStand_Click);
@@ -241,10 +260,11 @@ namespace Prototyping_of_Project
             this.btnHit.Enabled = false;
             this.btnHit.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnHit.ForeColor = System.Drawing.Color.Green;
-            this.btnHit.Location = new System.Drawing.Point(12, 601);
+            this.btnHit.Location = new System.Drawing.Point(12, 638);
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(331, 60);
             this.btnHit.TabIndex = 2;
+            this.btnHit.TabStop = false;
             this.btnHit.Text = "Hit";
             this.btnHit.UseVisualStyleBackColor = true;
             this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
@@ -254,10 +274,11 @@ namespace Prototyping_of_Project
             this.btnDouble.Enabled = false;
             this.btnDouble.Font = new System.Drawing.Font("Bowlby One SC", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDouble.ForeColor = System.Drawing.Color.Green;
-            this.btnDouble.Location = new System.Drawing.Point(12, 469);
+            this.btnDouble.Location = new System.Drawing.Point(12, 506);
             this.btnDouble.Name = "btnDouble";
             this.btnDouble.Size = new System.Drawing.Size(331, 60);
             this.btnDouble.TabIndex = 2;
+            this.btnDouble.TabStop = false;
             this.btnDouble.Text = "Double";
             this.btnDouble.UseVisualStyleBackColor = true;
             this.btnDouble.Click += new System.EventHandler(this.btnDouble_Click);
@@ -269,7 +290,7 @@ namespace Prototyping_of_Project
             this.label1.Font = new System.Drawing.Font("Bowlby One SC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(919, 9);
+            this.label1.Location = new System.Drawing.Point(919, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 31);
             this.label1.TabIndex = 3;
@@ -282,7 +303,7 @@ namespace Prototyping_of_Project
             this.lblFunds.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFunds.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblFunds.Image = ((System.Drawing.Image)(resources.GetObject("lblFunds.Image")));
-            this.lblFunds.Location = new System.Drawing.Point(919, 40);
+            this.lblFunds.Location = new System.Drawing.Point(919, 77);
             this.lblFunds.MaximumSize = new System.Drawing.Size(320, 50);
             this.lblFunds.MinimumSize = new System.Drawing.Size(320, 50);
             this.lblFunds.Name = "lblFunds";
@@ -298,7 +319,7 @@ namespace Prototyping_of_Project
             this.lblDealer.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDealer.ForeColor = System.Drawing.Color.White;
             this.lblDealer.Image = ((System.Drawing.Image)(resources.GetObject("lblDealer.Image")));
-            this.lblDealer.Location = new System.Drawing.Point(305, 245);
+            this.lblDealer.Location = new System.Drawing.Point(305, 282);
             this.lblDealer.MinimumSize = new System.Drawing.Size(124, 48);
             this.lblDealer.Name = "lblDealer";
             this.lblDealer.Size = new System.Drawing.Size(124, 48);
@@ -311,7 +332,7 @@ namespace Prototyping_of_Project
             this.my6.BackColor = System.Drawing.Color.Transparent;
             this.my6.ErrorImage = null;
             this.my6.InitialImage = null;
-            this.my6.Location = new System.Drawing.Point(380, 447);
+            this.my6.Location = new System.Drawing.Point(380, 484);
             this.my6.Name = "my6";
             this.my6.Size = new System.Drawing.Size(140, 214);
             this.my6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -323,7 +344,7 @@ namespace Prototyping_of_Project
             this.dealer6.BackColor = System.Drawing.Color.Transparent;
             this.dealer6.ErrorImage = null;
             this.dealer6.InitialImage = null;
-            this.dealer6.Location = new System.Drawing.Point(743, 15);
+            this.dealer6.Location = new System.Drawing.Point(743, 52);
             this.dealer6.Name = "dealer6";
             this.dealer6.Size = new System.Drawing.Size(140, 214);
             this.dealer6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -337,7 +358,7 @@ namespace Prototyping_of_Project
             this.lblPlaye.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPlaye.ForeColor = System.Drawing.Color.White;
             this.lblPlaye.Image = ((System.Drawing.Image)(resources.GetObject("lblPlaye.Image")));
-            this.lblPlaye.Location = new System.Drawing.Point(834, 380);
+            this.lblPlaye.Location = new System.Drawing.Point(834, 417);
             this.lblPlaye.MinimumSize = new System.Drawing.Size(124, 48);
             this.lblPlaye.Name = "lblPlaye";
             this.lblPlaye.Size = new System.Drawing.Size(124, 48);
@@ -350,10 +371,11 @@ namespace Prototyping_of_Project
             this.btnJustStart.Enabled = false;
             this.btnJustStart.Font = new System.Drawing.Font("Bowlby One SC", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnJustStart.ForeColor = System.Drawing.Color.Green;
-            this.btnJustStart.Location = new System.Drawing.Point(13, 339);
+            this.btnJustStart.Location = new System.Drawing.Point(13, 376);
             this.btnJustStart.Name = "btnJustStart";
             this.btnJustStart.Size = new System.Drawing.Size(215, 80);
             this.btnJustStart.TabIndex = 2;
+            this.btnJustStart.TabStop = false;
             this.btnJustStart.Text = "Start";
             this.btnJustStart.UseVisualStyleBackColor = true;
             this.btnJustStart.Click += new System.EventHandler(this.btnJustStart_Click);
@@ -362,10 +384,11 @@ namespace Prototyping_of_Project
             // 
             this.btnWithdraw.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnWithdraw.ForeColor = System.Drawing.Color.Green;
-            this.btnWithdraw.Location = new System.Drawing.Point(1027, 341);
+            this.btnWithdraw.Location = new System.Drawing.Point(1027, 378);
             this.btnWithdraw.Name = "btnWithdraw";
             this.btnWithdraw.Size = new System.Drawing.Size(236, 80);
             this.btnWithdraw.TabIndex = 2;
+            this.btnWithdraw.TabStop = false;
             this.btnWithdraw.Text = "Withdraw Winnings";
             this.btnWithdraw.UseVisualStyleBackColor = true;
             this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
@@ -374,10 +397,11 @@ namespace Prototyping_of_Project
             // 
             this.button1.Font = new System.Drawing.Font("Bowlby One SC", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.Green;
-            this.button1.Location = new System.Drawing.Point(1027, 159);
+            this.button1.Location = new System.Drawing.Point(1027, 196);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(236, 80);
             this.button1.TabIndex = 4;
+            this.button1.TabStop = false;
             this.button1.Text = "Toggle Balance";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -407,13 +431,139 @@ namespace Prototyping_of_Project
             this.resizeTimer.Interval = 10;
             this.resizeTimer.Tick += new System.EventHandler(this.resizeTimer_Tick);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.LightGreen;
+            this.menuStrip1.Font = new System.Drawing.Font("Bowlby One SC", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem,
+            this.fundsToolStripMenuItem,
+            this.optionsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1270, 35);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startGameToolStripMenuItem,
+            this.changeBetAndStartToolStripMenuItem});
+            this.gameToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(78, 31);
+            this.gameToolStripMenuItem.Text = "Game";
+            // 
+            // startGameToolStripMenuItem
+            // 
+            this.startGameToolStripMenuItem.Name = "startGameToolStripMenuItem";
+            this.startGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.startGameToolStripMenuItem.Size = new System.Drawing.Size(452, 32);
+            this.startGameToolStripMenuItem.Text = "Start Game";
+            this.startGameToolStripMenuItem.Click += new System.EventHandler(this.startGameToolStripMenuItem_Click);
+            // 
+            // changeBetAndStartToolStripMenuItem
+            // 
+            this.changeBetAndStartToolStripMenuItem.Name = "changeBetAndStartToolStripMenuItem";
+            this.changeBetAndStartToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.changeBetAndStartToolStripMenuItem.Size = new System.Drawing.Size(452, 32);
+            this.changeBetAndStartToolStripMenuItem.Text = "Change Bet and Start";
+            this.changeBetAndStartToolStripMenuItem.Click += new System.EventHandler(this.changeBetAndStartToolStripMenuItem_Click);
+            // 
+            // fundsToolStripMenuItem
+            // 
+            this.fundsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.depositFundsToolStripMenuItem,
+            this.withdrawFundsToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.toggleFundsToolStripMenuItem});
+            this.fundsToolStripMenuItem.Name = "fundsToolStripMenuItem";
+            this.fundsToolStripMenuItem.Size = new System.Drawing.Size(84, 31);
+            this.fundsToolStripMenuItem.Text = "Funds";
+            // 
+            // depositFundsToolStripMenuItem
+            // 
+            this.depositFundsToolStripMenuItem.Name = "depositFundsToolStripMenuItem";
+            this.depositFundsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.depositFundsToolStripMenuItem.Size = new System.Drawing.Size(293, 32);
+            this.depositFundsToolStripMenuItem.Text = "Deposit Funds";
+            this.depositFundsToolStripMenuItem.Click += new System.EventHandler(this.depositFundsToolStripMenuItem_Click);
+            // 
+            // withdrawFundsToolStripMenuItem
+            // 
+            this.withdrawFundsToolStripMenuItem.Name = "withdrawFundsToolStripMenuItem";
+            this.withdrawFundsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.withdrawFundsToolStripMenuItem.Size = new System.Drawing.Size(293, 32);
+            this.withdrawFundsToolStripMenuItem.Text = "Withdraw Funds";
+            this.withdrawFundsToolStripMenuItem.Click += new System.EventHandler(this.withdrawFundsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(290, 6);
+            // 
+            // toggleFundsToolStripMenuItem
+            // 
+            this.toggleFundsToolStripMenuItem.Name = "toggleFundsToolStripMenuItem";
+            this.toggleFundsToolStripMenuItem.Size = new System.Drawing.Size(293, 32);
+            this.toggleFundsToolStripMenuItem.Text = "Toggle Funds";
+            this.toggleFundsToolStripMenuItem.Click += new System.EventHandler(this.toggleFundsToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controlsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.hideAllButtonsToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.dshToggle});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(103, 31);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // controlsToolStripMenuItem
+            // 
+            this.controlsToolStripMenuItem.Name = "controlsToolStripMenuItem";
+            this.controlsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
+            this.controlsToolStripMenuItem.Size = new System.Drawing.Size(330, 32);
+            this.controlsToolStripMenuItem.Text = "Controls";
+            this.controlsToolStripMenuItem.Click += new System.EventHandler(this.controlsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(327, 6);
+            // 
+            // hideAllButtonsToolStripMenuItem
+            // 
+            this.hideAllButtonsToolStripMenuItem.Name = "hideAllButtonsToolStripMenuItem";
+            this.hideAllButtonsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.hideAllButtonsToolStripMenuItem.Size = new System.Drawing.Size(330, 32);
+            this.hideAllButtonsToolStripMenuItem.Text = "Toggle Buttons";
+            this.hideAllButtonsToolStripMenuItem.Click += new System.EventHandler(this.hideAllButtonsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(327, 6);
+            // 
+            // dshToggle
+            // 
+            this.dshToggle.Name = "dshToggle";
+            this.dshToggle.Size = new System.Drawing.Size(330, 32);
+            this.dshToggle.Text = "Toggle Game Buttons";
+            this.dshToggle.Click += new System.EventHandler(this.dshToggle_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackgroundImage = global::BlackJack.Properties.Resources.preset_reserve;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1270, 689);
+            this.ClientSize = new System.Drawing.Size(1270, 723);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.my4);
             this.Controls.Add(this.my3);
@@ -438,11 +588,15 @@ namespace Prototyping_of_Project
             this.Controls.Add(this.my2);
             this.Controls.Add(this.my1);
             this.Controls.Add(this.dealer1);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1780, 960);
             this.Name = "Form1";
             this.Text = "Blackjack";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dealer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer3)).EndInit();
@@ -455,6 +609,8 @@ namespace Prototyping_of_Project
             ((System.ComponentModel.ISupportInitialize)(this.my5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.my6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer6)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,6 +646,21 @@ namespace Prototyping_of_Project
         private System.Windows.Forms.Timer playerAnim;
         private System.Windows.Forms.Timer playerAnim2;
         private System.Windows.Forms.Timer resizeTimer;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeBetAndStartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fundsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toggleFundsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depositFundsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem withdrawFundsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controlsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideAllButtonsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem dshToggle;
     }
 }
 
