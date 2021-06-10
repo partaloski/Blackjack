@@ -546,7 +546,6 @@ namespace Prototyping_of_Project
                 {
                     btnHit.Enabled = true;
                     btnStand.Enabled = true;
-                    btnDouble.Enabled = true;
                 }
             }
 
@@ -851,17 +850,17 @@ namespace Prototyping_of_Project
             if (pressedKey.ToLower() == "s")
             {
                 //Stand
-                if (btnStand.Enabled && btnStand.Visible) btnStand_Click(sender, e);
+                if (btnStand.Enabled) btnStand_Click(sender, e);
             }
             else if (pressedKey.ToLower() == "a")
             {
                 //Hit
-                if (btnHit.Enabled && btnHit.Visible) btnHit_Click(sender, e);
+                if (btnHit.Enabled) btnHit_Click(sender, e);
             }
             else if (pressedKey.ToLower() == "d")
             {
                 //Double
-                if (btnDouble.Enabled && btnDouble.Visible) btnDouble_Click(sender, e);
+                if (btnDouble.Enabled) btnDouble_Click(sender, e);
             }
         }
 
@@ -869,7 +868,7 @@ namespace Prototyping_of_Project
         {
             btnStand.Visible = !btnStand.Visible;
             btnHit.Visible = !btnHit.Visible;
-            btnDouble.Visible = !btnDouble.Visible;
+            btnDouble.Visible = btnHit.Visible;
         }
 
         private async void resetFocus()
