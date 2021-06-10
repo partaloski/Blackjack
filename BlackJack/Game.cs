@@ -14,6 +14,7 @@ namespace Prototyping_of_Project
         private bool playerStood { get; set; }
         private bool playerHit { get; set; }
         private bool playerDouble { get; set; }
+        private bool moved { get; set; }
 
         public bool gameStarted = false;
 
@@ -158,6 +159,7 @@ namespace Prototyping_of_Project
             currentDealer = "";
             currentPlayer = "";
             this.gameStarted = false;
+            this.moved = false;
         }
 
         public bool doubled()
@@ -169,6 +171,15 @@ namespace Prototyping_of_Project
         {
 
             playerDouble = true;
+        }
+
+        public void move()
+        {
+            moved = true;
+        }
+        public bool playerDidSomething()
+        {
+            return moved;
         }
     }
 }

@@ -136,6 +136,7 @@ namespace Prototyping_of_Project
                 bet = form.value;
                 funds -= bet;
                 game.gameStarted = true;
+                btnDouble.Enabled = false;
                 hit(true);
                 hit(false);
                 hit(true);
@@ -168,6 +169,7 @@ namespace Prototyping_of_Project
             bet = StartGame.lastBet;
             funds -= bet;
             game.gameStarted = true;
+            btnDouble.Enabled = false;
             hit(true);
             hit(false);
             hit(true);
@@ -186,9 +188,9 @@ namespace Prototyping_of_Project
         {
             btnHit.Enabled = true;
             btnDouble.Visible = btnHit.Visible;
-            btnDouble.Enabled = true;
             btnStand.Enabled = true;
             btnStart.Enabled = false;
+            btnDouble.Enabled = false;
             btnJustStart.Enabled = false;
             //Set up buttons in order to make them clickable
             dealerPic = new List<PictureBox>();
@@ -246,6 +248,7 @@ namespace Prototyping_of_Project
                     updateCards();
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
+                    btnDouble.Enabled = false;
                 }
                 end();
             }
@@ -255,9 +258,11 @@ namespace Prototyping_of_Project
                 btnStand.Enabled = true;
                 btnHit.Enabled = true;
                 btnDouble.Visible = false;
+                btnDouble.Enabled = false;
             }
             resetFocus();
             anybuttonClicked = false;
+            game.move();
         }
         //Stand button function
         private async void btnStand_Click(object sender, EventArgs e)
@@ -283,6 +288,7 @@ namespace Prototyping_of_Project
             end();
             resetFocus();
             anybuttonClicked = false;
+            game.move();
         }
 
         //Hit button function
@@ -294,6 +300,7 @@ namespace Prototyping_of_Project
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDouble.Enabled = false;
                 anybuttonClicked = false;
                 return;
             }
@@ -302,6 +309,7 @@ namespace Prototyping_of_Project
             end();
             resetFocus();
             anybuttonClicked = false;
+            game.move();
         }
 
         //A function to update the images of the cards
@@ -384,6 +392,7 @@ namespace Prototyping_of_Project
                 funds += x;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDouble.Enabled = false;
                 await Task.Delay(400);
                 MessageBox.Show("BLACKJACK!!!! YOU WON " + (x).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
             }
@@ -391,6 +400,7 @@ namespace Prototyping_of_Project
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDouble.Enabled = false;
                 funds += bet * 2;
                 await Task.Delay(400);
                 MessageBox.Show("YOU WON " + (bet * 2).ToString() + " WITH YOUR BET OF " + bet.ToString() + "!!!!");
@@ -399,6 +409,7 @@ namespace Prototyping_of_Project
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDouble.Enabled = false;
                 await Task.Delay(400);
                 MessageBox.Show("THE DEALER HAD BLACKJACK, HE WON!!!!");
             }
@@ -406,6 +417,7 @@ namespace Prototyping_of_Project
             {
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDouble.Enabled = false;
                 funds += bet;
                 await Task.Delay(400);
                 MessageBox.Show("YOU GET YOUR MONEY BACK!");
@@ -413,6 +425,7 @@ namespace Prototyping_of_Project
             else if (outx == "dealer")
             {
                 btnHit.Enabled = false;
+                btnDouble.Enabled = false;
                 btnStand.Enabled = false;
                 await Task.Delay(400);
                 MessageBox.Show("YOU LOST " + (bet).ToString() + ", THE DEALER HAS WON! Better luck next time!");
@@ -542,10 +555,11 @@ namespace Prototyping_of_Project
             {
                 playerAnimStarted1 = false;
                 playerAnim.Stop();
-                if (!playerAnimStarted1 && !playerAnimStarted2)
+                if (!playerAnimStarted1 && !playerAnimStarted2 && !game.doubled())
                 {
                     btnHit.Enabled = true;
                     btnStand.Enabled = true;
+                    btnDouble.Enabled = game.playerCards.Count == 2;
                 }
             }
 
@@ -590,11 +604,11 @@ namespace Prototyping_of_Project
             {
                 playerAnimStarted2 = false;
                 playerAnim2.Stop();
-                if (!playerAnimStarted1 && !playerAnimStarted2)
+                if (!playerAnimStarted1 && !playerAnimStarted2 && !game.doubled())
                 {
                     btnHit.Enabled = true;
                     btnStand.Enabled = true;
-                    btnDouble.Enabled = true;
+                    btnDouble.Enabled = game.playerCards.Count == 2;
                 }
             }
         }
@@ -720,7 +734,6 @@ namespace Prototyping_of_Project
                 {
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
-                    btnDouble.Enabled = false;
                     playerAnimStarted1 = true;
                     playerAnimPic1 = playerAnimPicAnon;
                     playerAnim.Start();
@@ -729,7 +742,6 @@ namespace Prototyping_of_Project
                 {
                     btnHit.Enabled = false;
                     btnStand.Enabled = false;
-                    btnDouble.Enabled = false;
                     playerAnimStarted2 = true;
                     playerAnimPic2 = playerAnimPicAnon;
                     playerAnim2.Start();
@@ -882,12 +894,32 @@ namespace Prototyping_of_Project
         {
             btnHit.Enabled = !btnHit.Enabled;
             btnStand.Enabled = !btnStand.Enabled;
-            btnDouble.Enabled = !btnDouble.Enabled;
             btnDeposit.Enabled = !btnDeposit.Enabled;
             btnWithdraw.Enabled = !btnWithdraw.Enabled;
             button1.Enabled = !button1.Enabled;
             btnStart.Enabled = !btnStart.Enabled;
             btnJustStart.Enabled = !btnJustStart.Enabled;
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            double ratio = 1288.0F / 720.0F;
+            int height = this.Size.Height;
+            int width = Convert.ToInt32(Convert.ToDouble(height) * ratio);
+
+            int width2 = this.Size.Width;
+            int height2 = Convert.ToInt32(Convert.ToDouble(width) / ratio);
+
+            int res1 = height * width;
+            int res2 = height2 * width2;
+
+            if(res2 < res1)
+            {
+                width = width2;
+                height = height2;
+            }
+
+            this.Size = new Size(width, height);
         }
     }
 }
